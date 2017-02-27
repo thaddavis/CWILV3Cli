@@ -3,13 +3,14 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 import { AuthenticationService } from '../_services/index';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/first';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class StudentGuard implements CanActivate {
 
     constructor(private router: Router, private authenticationService: AuthenticationService) { }
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Boolean> {
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
       console.log('Student Guard');
       let token = JSON.parse(localStorage.getItem('currentUser'))
 
@@ -26,14 +27,11 @@ export class StudentGuard implements CanActivate {
               } else {
                 return false;
               }
-          },
-          error => {
-              return false;
           }).first();
 
       } else {
         this.router.navigate(['/login']);
-        return false
+        return Observable.of(false);
       }
 
 

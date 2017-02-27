@@ -14,6 +14,7 @@ var router_1 = require("@angular/router");
 var index_1 = require("../_services/index");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/first");
+var Observable_1 = require("rxjs/Observable");
 var TeacherGuard = (function () {
     function TeacherGuard(router, authenticationService) {
         this.router = router;
@@ -36,13 +37,11 @@ var TeacherGuard = (function () {
                 else {
                     return false;
                 }
-            }, function (error) {
-                return false;
-            }).first();
+            });
         }
         else {
             this.router.navigate(['/login']);
-            return false;
+            return Observable_1.Observable.of(false);
         }
     };
     return TeacherGuard;
