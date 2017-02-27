@@ -1,0 +1,15 @@
+﻿a {
+    cursor: pointer;
+}
+
+.help-block {
+    font-size: 12px;
+}
+
+body {
+  padding-top: 5rem;
+}
+
+.has-error .help-block {
+  color: red;
+}
