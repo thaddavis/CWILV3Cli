@@ -20,8 +20,8 @@
 </nav>
 
 <div class="container-fluid">
-  <div class="row">
-    <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+  <div>
+    <nav class="col-sm-2 col-md-2 hidden-xs-down bg-faded sidebar">
       <ul class="nav nav-pills flex-column">
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/teacher/overview']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
@@ -41,9 +41,10 @@
   true}">Browse Content</a>
         </li>
       </ul>
-
     </nav>
 
-    <router-outlet></router-outlet>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

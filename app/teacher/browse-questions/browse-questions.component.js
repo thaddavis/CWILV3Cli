@@ -13,26 +13,23 @@ var core_1 = require("@angular/core");
 var index_1 = require("../../_services/index");
 var router_1 = require("@angular/router");
 var BrowseQuestionsComponent = (function () {
-    function BrowseQuestionsComponent(userService, authenticationService, router) {
+    function BrowseQuestionsComponent(userService, authenticationService, router, questionService) {
         this.userService = userService;
         this.authenticationService = authenticationService;
         this.router = router;
-        this.users = [];
+        this.questionService = questionService;
+        this.questions = [];
         console.log('Browse Component');
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
     BrowseQuestionsComponent.prototype.ngOnInit = function () {
-        //this.loadAllUsers();
+        this.loadAllQuestions();
     };
-    BrowseQuestionsComponent.prototype.logout = function () {
-        this.authenticationService.logout();
-        this.router.navigate(['/']);
-    };
-    BrowseQuestionsComponent.prototype.deleteUser = function (id) {
-        //this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
-    };
-    BrowseQuestionsComponent.prototype.loadAllUsers = function () {
-        //this.userService.getAll().subscribe(users => { this.users = users; });
+    BrowseQuestionsComponent.prototype.loadAllQuestions = function () {
+        var _this = this;
+        this.questionService.getAll().subscribe(function (questions) {
+            console.log(questions['questions']);
+            _this.questions = questions['questions'];
+        });
     };
     return BrowseQuestionsComponent;
 }());
@@ -42,7 +39,10 @@ BrowseQuestionsComponent = __decorate([
         templateUrl: 'browse-questions.component.html',
         styleUrls: ['./browse-questions.css']
     }),
-    __metadata("design:paramtypes", [index_1.UserService, index_1.AuthenticationService, router_1.Router])
+    __metadata("design:paramtypes", [index_1.UserService,
+        index_1.AuthenticationService,
+        router_1.Router,
+        index_1.QuestionService])
 ], BrowseQuestionsComponent);
 exports.BrowseQuestionsComponent = BrowseQuestionsComponent;
 //# sourceMappingURL=browse-questions.component.js.map

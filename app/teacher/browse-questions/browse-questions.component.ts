@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { User } from '../../_models/index';
-import { UserService, AuthenticationService } from '../../_services/index';
+import { Question, User } from '../../_models/index';
+import { UserService, AuthenticationService, QuestionService } from '../../_services/index';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,30 +11,24 @@ import { Router } from '@angular/router';
 })
 
 export class BrowseQuestionsComponent implements OnInit {
-    currentUser: User;
-    users: User[] = [];
+    questions: Question[] = [];
 
-    constructor(private userService: UserService, private authenticationService: AuthenticationService, private router: Router) {
+    constructor(
+      private userService: UserService,
+      private authenticationService: AuthenticationService,
+      private router: Router,
+      private questionService: QuestionService
+    ) {
         console.log('Browse Component');
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
     ngOnInit() {
-        //this.loadAllUsers();
+        this.loadAllQuestions();
     }
 
-    logout() {
-
-      this.authenticationService.logout();
-      this.router.navigate(['/']);
-
-    }
-
-    deleteUser(id: number) {
-        //this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
-    }
-
-    private loadAllUsers() {
-        //this.userService.getAll().subscribe(users => { this.users = users; });
+    loadAllQuestions() {
+        this.questionService.getAll().subscribe(questions => {
+        console.log(questions['questions']);
+        this.questions = questions['questions']; });
     }
 }

@@ -1,6 +1,280 @@
-<main class="col-sm-4 offset-sm-4 col-md-9 offset-md-3 pt-3">
-  <div class="container">
-    <h1>Browse Questions</h1>
+<!-- <div class="container-fluid">
+  <div>
+    <div class="col-sm-2 offset-sm-3 col-md-2 offset-md-2" style="background-color: #0F0;">
+
+        <div class="scrollable-master">
+          <p class="text-center"><i>Kindergarten Math Standards</i></p>
+          <div id="accordion" role="tablist" aria-multiselectable="true">
+
+            <div class="card">
+              <div class="card-header" role="tab" id="headingOne">
+                <div class="mb-0">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    Counting & Cardinality
+                  </a>
+                </div>
+              </div>
+
+              <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class="card-block">
+                  <ul style="font-size: 10px; margin-left: -25px;">
+
+                    <li><a> {{ 'CCSS.MATH.CONTENT.K.CC.A.1' | standardCleaner }} </a></li>
+                    <hr/>
+                    <li><a> {{ 'CCSS.MATH.CONTENT.K.CC.A.2' | standardCleaner }} </a></li>
+                    <hr/>
+                    <li><a> {{ 'CCSS.MATH.CONTENT.K.CC.A.3' | standardCleaner }} </a></li>
+                    <hr/>
+                    <li><a> {{ 'CCSS.MATH.CONTENT.K.CC.B.1' | standardCleaner }} </a></li>
+                    <hr/>
+                    <li><a> {{ 'CCSS.MATH.CONTENT.K.CC.B.2' | standardCleaner }} </a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header" role="tab" id="headingTwo">
+                <div class="mb-0">
+                  <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Operations & Algebraic Thinking
+                  </a>
+                </div>
+              </div>
+              <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="card-block">
+                  <ul style="font-size: 10px">
+                    <li><a>CCSS.MATH.CONTENT.K.CC.A.1</a></li>
+                    <hr/>
+                    <li><a>CCSS.MATH.CONTENT.K.CC.A.2</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header" role="tab" id="headingThree">
+                <div class="mb-0">
+                  <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Numbers & Operations in Base Ten
+                  </a>
+                </div>
+              </div>
+              <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="card-block">
+                  <ul style="font-size: 10px">
+                    <li><a>CCSS.MATH.CONTENT.K.CC.A.1</a></li>
+                    <hr/>
+                    <li><a>CCSS.MATH.CONTENT.K.CC.A.2</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header" role="tab" id="headingTwo">
+                <div class="mb-0">
+                  <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseTwo">
+                    Measurement & Data
+                  </a>
+                </div>
+              </div>
+              <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="card-block">
+                  <ul style="font-size: 10px">
+                    <li><a>CCSS.MATH.CONTENT.K.CC.A.1</a></li>
+                    <hr/>
+                    <li><a>CCSS.MATH.CONTENT.K.CC.A.2</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header" role="tab" id="headingTwo">
+                <div class="mb-0">
+                  <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseTwo">
+                    Geometry
+                  </a>
+                </div>
+              </div>
+              <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="card-block">
+                  <ul style="font-size: 10px">
+                    <li><a>CCSS.MATH.CONTENT.K.CC.A.1</a></li>
+                    <hr/>
+                    <li><a>CCSS.MATH.CONTENT.K.CC.A.2</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+
+    </div>
   </div>
 
-</main>
+  <div class="col-sm-7 offset-sm-5 col-md-8 offset-md-4 scrollable-detail">
+      <div>
+        <ul class="list-group">
+            <li *ngFor="let question of questions" class="list-group-item">
+              <a [routerLink]="['/question']" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <p style="font-size:10px;" class="mb-1">{{question.standard}}</p>
+                </div>
+                <p class="mb-1"><strong>Domain:</strong> {{question.domain}}</p>
+                <p class="mb-1"><strong>Genre:</strong> {{question.genre}}</p>
+                <p class="mb-1"><strong>Grades:</strong> {{question.grades}}</p>
+                <p class="mb-1"><strong>Domain:</strong> {{question.domain}}</p>
+                <p class="mb-1"><strong>States:</strong> {{question.states}}</p>
+                <p style="padding-left: 60px;">Add to Shopping Cart: <img src="./shopping-cart.png" width="40" height="30" /></p>
+              </a>
+
+
+            </li>
+        </ul>
+      </div>
+  </div>
+
+
+
+</div> -->
+
+<div class="container-fluid"><!-- To get it to take up the whole width -->
+
+      <div class="row main-content">
+        <div class="col-sm-2 offset-sm-2 col-md-2 offset-md-2">
+            <p class="text-center"><i>Kindergarten Math Standards</i></p>
+            <div class="scrollable-master">
+              <div id="accordion" role="tablist" aria-multiselectable="true">
+
+                <div class="card">
+                  <div class="card-header" role="tab" id="headingOne">
+                    <h5 class="mb-0">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Counting & Cardinality
+                      </a>
+                    </h5>
+                  </div>
+
+                  <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="card-block">
+                      <ul style="font-size: 10px">
+                        <li><a> {{ 'CCSS.MATH.CONTENT.K.CC.A.1' | standardCleaner }} </a></li>
+                        <hr/>
+                        <li><a> {{ 'CCSS.MATH.CONTENT.K.CC.A.2' | standardCleaner }} </a></li>
+                        <hr/>
+                        <li><a> {{ 'CCSS.MATH.CONTENT.K.CC.A.3' | standardCleaner }} </a></li>
+                        <hr/>
+                        <li><a> {{ 'CCSS.MATH.CONTENT.K.CC.B.1' | standardCleaner }} </a></li>
+                        <hr/>
+                        <li><a> {{ 'CCSS.MATH.CONTENT.K.CC.B.2' | standardCleaner }} </a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header" role="tab" id="headingTwo">
+                    <h5 class="mb-0">
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Operations & Algebraic Thinking
+                      </a>
+                    </h5>
+                  </div>
+                  <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="card-block">
+                      <ul style="font-size: 10px">
+                        <li><a>CCSS.MATH.CONTENT.K.CC.A.1</a></li>
+                        <hr/>
+                        <li><a>CCSS.MATH.CONTENT.K.CC.A.2</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header" role="tab" id="headingThree">
+                    <h5 class="mb-0">
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Numbers & Operations in Base Ten
+                      </a>
+                    </h5>
+                  </div>
+                  <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="card-block">
+                      <ul style="font-size: 10px">
+                        <li><a>CCSS.MATH.CONTENT.K.CC.A.1</a></li>
+                        <hr/>
+                        <li><a>CCSS.MATH.CONTENT.K.CC.A.2</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header" role="tab" id="headingTwo">
+                    <h5 class="mb-0">
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseTwo">
+                        Measurement & Data
+                      </a>
+                    </h5>
+                  </div>
+                  <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="card-block">
+                      <ul style="font-size: 10px">
+                        <li><a>CCSS.MATH.CONTENT.K.CC.A.1</a></li>
+                        <hr/>
+                        <li><a>CCSS.MATH.CONTENT.K.CC.A.2</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header" role="tab" id="headingTwo">
+                    <h5 class="mb-0">
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseTwo">
+                        Geometry
+                      </a>
+                    </h5>
+                  </div>
+                  <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="card-block">
+                      <ul style="font-size: 10px">
+                        <li><a>CCSS.MATH.CONTENT.K.CC.A.1</a></li>
+                        <hr/>
+                        <li><a>CCSS.MATH.CONTENT.K.CC.A.2</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-7 col-md-8 scrollable-detail">
+          <ul class="list-group">
+              <li *ngFor="let question of questions" class="list-group-item">
+                <a [routerLink]="['/question']" class="list-group-item list-group-item-action flex-column align-items-start">
+                  <div class="d-flex w-100 justify-content-between">
+                    <p style="font-size:10px;" class="mb-1">{{question.standard}}</p>
+                  </div>
+                  <p class="mb-1"><strong>Domain:</strong> {{question.domain}}</p>
+                  <p class="mb-1"><strong>Genre:</strong> {{question.genre}}</p>
+                  <p class="mb-1"><strong>Grades:</strong> {{question.grades}}</p>
+                  <p class="mb-1"><strong>Domain:</strong> {{question.domain}}</p>
+                  <p class="mb-1"><strong>States:</strong> {{question.states}}</p>
+                  <p style="padding-left: 60px;">Add to Shopping Cart: <img src="./shopping-cart.png" width="40" height="30" /></p>
+                </a>
+
+
+              </li>
+          </ul>
+        </div>
+      </div><!-- row -->
+
+</div><!-- container-fluid -->
