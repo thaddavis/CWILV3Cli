@@ -15,7 +15,7 @@ var ProfileComponent = (function () {
     function ProfileComponent(userService) {
         this.userService = userService;
         this.users = [];
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        console.log('Profile Component');
     }
     ProfileComponent.prototype.ngOnInit = function () {
     };

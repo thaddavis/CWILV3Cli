@@ -3,12 +3,12 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 import { AuthenticationService } from '../_services/index';
 
 @Injectable()
-export class ProfileGuard implements CanActivate {
+export class StudentGuard implements CanActivate {
 
     constructor(private router: Router, private authenticationService: AuthenticationService) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-      console.log('canActivate profile');
+
       let token = JSON.parse(localStorage.getItem('currentUser'))
 
       if (token) {
@@ -16,11 +16,10 @@ export class ProfileGuard implements CanActivate {
           .subscribe(
             data => {
               if (data.role == "student") {
-                this.router.navigate(['/student']);
+                //this.router.navigate(['/profile/student']);
                 return true;
               } else if (data.role == "teacher") {
-                this.router.navigate(['/teacher']);
-                return true;
+                return false;
               } else {
                 return false;
               }
@@ -35,4 +34,34 @@ export class ProfileGuard implements CanActivate {
       }
 
     }
+
+    canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+      let token = JSON.parse(localStorage.getItem('currentUser'))
+
+      if (token) {
+          this.authenticationService.authenticateRole(token)
+            .subscribe(
+              data => {
+                if (data.role == "student") {
+                  this.router.navigate(['/profile/student']);
+                  return true;
+                } else if (data.role == "teacher") {
+                  this.router.navigate(['/profile/teacher']);
+                  return true;
+                } else {
+                  return false;
+                }
+            },
+            error => {
+                return false;
+            });
+
+          return true;
+        } else {
+          return false
+        }
+
+      }
+
+
 }

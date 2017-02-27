@@ -12,25 +12,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var index_1 = require("../_services/index");
-var ProfileGuard = (function () {
-    function ProfileGuard(router, authenticationService) {
+var StudentGuard = (function () {
+    function StudentGuard(router, authenticationService) {
         this.router = router;
         this.authenticationService = authenticationService;
     }
-    ProfileGuard.prototype.canActivate = function (route, state) {
-        var _this = this;
-        console.log('canActivate profile');
+    StudentGuard.prototype.canActivate = function (route, state) {
         var token = JSON.parse(localStorage.getItem('currentUser'));
         if (token) {
             this.authenticationService.authenticateRole(token)
                 .subscribe(function (data) {
                 if (data.role == "student") {
-                    _this.router.navigate(['/student']);
+                    //this.router.navigate(['/profile/student']);
                     return true;
                 }
                 else if (data.role == "teacher") {
-                    _this.router.navigate(['/teacher']);
-                    return true;
+                    return false;
                 }
                 else {
                     return false;
@@ -45,11 +42,37 @@ var ProfileGuard = (function () {
             return false;
         }
     };
-    return ProfileGuard;
+    StudentGuard.prototype.canActivateChild = function (route, state) {
+        var _this = this;
+        var token = JSON.parse(localStorage.getItem('currentUser'));
+        if (token) {
+            this.authenticationService.authenticateRole(token)
+                .subscribe(function (data) {
+                if (data.role == "student") {
+                    _this.router.navigate(['/profile/student']);
+                    return true;
+                }
+                else if (data.role == "teacher") {
+                    _this.router.navigate(['/profile/teacher']);
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }, function (error) {
+                return false;
+            });
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+    return StudentGuard;
 }());
-ProfileGuard = __decorate([
+StudentGuard = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [router_1.Router, index_1.AuthenticationService])
-], ProfileGuard);
-exports.ProfileGuard = ProfileGuard;
-//# sourceMappingURL=profile.guard.js.map
+], StudentGuard);
+exports.StudentGuard = StudentGuard;
+//# sourceMappingURL=student.guard.js.map

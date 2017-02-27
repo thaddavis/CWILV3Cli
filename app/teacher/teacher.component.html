@@ -2,7 +2,7 @@
   <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">Student Dashboard</a>
+  <a class="navbar-brand" href="#">Teacher Dashboard</a>
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
@@ -37,6 +37,11 @@
           <a class="nav-link" href="#">Tests</a>
         </li>
         <li class="nav-item">
+          <!-- <a class="nav-link" href="#">Browse Content</a> -->
+          <a class="nav-link" [routerLink]="['/browse-questions']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+  true}">Browser Content</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="#">Message Boards</a>
         </li>
       </ul>
@@ -64,28 +69,28 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Subject</th>
-              <th>Score</th>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Grade</th>
 
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>11/11/2011</td>
-              <td>Counting</td>
+              <td>123231</td>
+              <td>Augostin Correa</td>
               <td>97%</td>
 
             </tr>
             <tr>
-              <td>11/11/2011</td>
-              <td>Counting</td>
-              <td>97%</td>
+              <td>42345</td>
+              <td>Tadeo Mattheus</td>
+              <td>94%</td>
 
             </tr>
             <tr>
-              <td>11/11/2011</td>
-              <td>Counting</td>
+              <td>578492</td>
+              <td>Henrietta Sanchez</td>
               <td>97%</td>
 
             </tr>

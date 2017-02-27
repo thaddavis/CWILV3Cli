@@ -8,38 +8,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var profile_component_1 = require("./profile.component");
-var profileRoutes = [
+var teacher_component_1 = require("./teacher.component");
+var teacherRoutes = [
     {
         path: '',
-        component: profile_component_1.ProfileComponent,
+        component: teacher_component_1.TeacherComponent,
         children: [
             {
-                path: ''
-                //,
-                //children: [
-                //  { path: '', redirectTo: 'student', pathMatch: 'full' },
-                //  { path: 'teacher', component: TeacherComponent },
-                //  { path: 'student', component: StudentComponent }
-                //]
+                path: '',
+                children: [
+                    { path: '', pathMatch: 'full' },
+                    { path: 'browse-questions', component: teacher_component_1.TeacherComponent },
+                ]
             }
         ]
     }
 ];
-var ProfileRoutingModule = (function () {
-    function ProfileRoutingModule() {
+var TeacherRoutingModule = (function () {
+    function TeacherRoutingModule() {
     }
-    return ProfileRoutingModule;
+    return TeacherRoutingModule;
 }());
-ProfileRoutingModule = __decorate([
+TeacherRoutingModule = __decorate([
     core_1.NgModule({
         imports: [
-            router_1.RouterModule.forChild(profileRoutes)
+            router_1.RouterModule.forChild(teacherRoutes)
         ],
         exports: [
             router_1.RouterModule
         ]
     })
-], ProfileRoutingModule);
-exports.ProfileRoutingModule = ProfileRoutingModule;
-//# sourceMappingURL=profile-routing.module.js.map
+], TeacherRoutingModule);
+exports.TeacherRoutingModule = TeacherRoutingModule;
+//# sourceMappingURL=teacher-routing.module.js.map

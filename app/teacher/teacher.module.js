@@ -8,23 +8,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
-var profile_component_1 = require("./profile.component");
-var profile_routing_module_1 = require("./profile-routing.module");
-var ProfileModule = (function () {
-    function ProfileModule() {
+var teacher_routing_module_1 = require("./teacher-routing.module");
+var teacher_component_1 = require("./teacher.component");
+var forms_1 = require("@angular/forms");
+var TeacherModule = (function () {
+    function TeacherModule() {
     }
-    return ProfileModule;
+    return TeacherModule;
 }());
-ProfileModule = __decorate([
+TeacherModule = __decorate([
     core_1.NgModule({
         imports: [
             common_1.CommonModule,
-            profile_routing_module_1.ProfileRoutingModule
+            teacher_routing_module_1.TeacherRoutingModule,
+            forms_1.FormsModule
         ],
         declarations: [
-            profile_component_1.ProfileComponent
+            teacher_component_1.TeacherComponent
         ]
     })
-], ProfileModule);
-exports.ProfileModule = ProfileModule;
-//# sourceMappingURL=profile.module.js.map
+], TeacherModule);
+exports.TeacherModule = TeacherModule;
+//# sourceMappingURL=teacher.module.js.map

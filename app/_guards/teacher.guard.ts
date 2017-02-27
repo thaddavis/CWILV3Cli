@@ -3,12 +3,12 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 import { AuthenticationService } from '../_services/index';
 
 @Injectable()
-export class ProfileGuard implements CanActivate {
+export class TeacherGuard implements CanActivate {
 
     constructor(private router: Router, private authenticationService: AuthenticationService) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-      console.log('canActivate profile');
+
       let token = JSON.parse(localStorage.getItem('currentUser'))
 
       if (token) {
@@ -16,10 +16,9 @@ export class ProfileGuard implements CanActivate {
           .subscribe(
             data => {
               if (data.role == "student") {
-                this.router.navigate(['/student']);
-                return true;
+                return false;
               } else if (data.role == "teacher") {
-                this.router.navigate(['/teacher']);
+                //this.router.navigate(['/teacher']);
                 return true;
               } else {
                 return false;
@@ -35,4 +34,5 @@ export class ProfileGuard implements CanActivate {
       }
 
     }
+
 }

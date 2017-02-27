@@ -9,17 +9,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var http_1 = require("@angular/http");
-// used to create fake backend
-// import { fakeBackendProvider } from './_helpers/index';
-// import { MockBackend, MockConnection } from '@angular/http/testing';
-// import { BaseRequestOptions } from '@angular/http';
 var app_component_1 = require("./app.component");
 var app_routing_1 = require("./app.routing");
 var index_1 = require("./_directives/index");
 var index_2 = require("./_guards/index");
 var index_3 = require("./_services/index");
-//import { LoginComponent } from './home/authPages/login/index';
-//import { RegisterComponent } from './home/authPages/register/index';
 var AppModule = (function () {
     function AppModule() {
     }
@@ -37,9 +31,9 @@ AppModule = __decorate([
             index_1.AlertComponent
         ],
         providers: [
-            index_2.AuthGuard,
             index_2.HomeGuard,
             index_2.ProfileGuard,
+            index_2.TeacherGuard,
             index_3.AlertService,
             index_3.AuthenticationService,
             index_3.UserService

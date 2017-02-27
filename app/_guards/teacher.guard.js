@@ -12,28 +12,41 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var index_1 = require("../_services/index");
-var AuthGuard = (function () {
-    function AuthGuard(router, authenticationService) {
+var TeacherGuard = (function () {
+    function TeacherGuard(router, authenticationService) {
         this.router = router;
         this.authenticationService = authenticationService;
     }
-    AuthGuard.prototype.canActivate = function (route, state) {
-        if (localStorage.getItem('currentUser') && this.authenticationService.authenticated(localStorage.getItem('currentUser'))) {
-            // logged in so return true
+    TeacherGuard.prototype.canActivate = function (route, state) {
+        var token = JSON.parse(localStorage.getItem('currentUser'));
+        if (token) {
+            this.authenticationService.authenticateRole(token)
+                .subscribe(function (data) {
+                if (data.role == "student") {
+                    return false;
+                }
+                else if (data.role == "teacher") {
+                    //this.router.navigate(['/teacher']);
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }, function (error) {
+                return false;
+            });
             return true;
         }
-        // not logged in so redirect to login page with the return url
-        this.router.navigate(['/'], { queryParams: { returnUrl: state.url } });
-        return false;
+        else {
+            this.router.navigate(['/login']);
+            return false;
+        }
     };
-    AuthGuard.prototype.canActivateChild = function (route, state) {
-        return this.canActivate(route, state);
-    };
-    return AuthGuard;
+    return TeacherGuard;
 }());
-AuthGuard = __decorate([
+TeacherGuard = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [router_1.Router, index_1.AuthenticationService])
-], AuthGuard);
-exports.AuthGuard = AuthGuard;
-//# sourceMappingURL=home_guard.js.map
+], TeacherGuard);
+exports.TeacherGuard = TeacherGuard;
+//# sourceMappingURL=teacher.guard.js.map
