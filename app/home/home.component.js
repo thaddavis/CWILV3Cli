@@ -26,7 +26,8 @@ var HomeComponent = (function () {
 HomeComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
-        templateUrl: 'home.component.html'
+        templateUrl: 'home.component.html',
+        styleUrls: ['./home.css']
     }),
     __metadata("design:paramtypes", [index_1.UserService,
         index_1.AuthenticationService,

@@ -34,6 +34,7 @@ AppModule = __decorate([
             index_2.HomeGuard,
             index_2.ProfileGuard,
             index_2.TeacherGuard,
+            index_2.StudentGuard,
             index_3.AlertService,
             index_3.AuthenticationService,
             index_3.UserService

@@ -12,21 +12,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var index_1 = require("../_services/index");
+require("rxjs/add/operator/map");
+require("rxjs/add/operator/first");
 var TeacherGuard = (function () {
     function TeacherGuard(router, authenticationService) {
         this.router = router;
         this.authenticationService = authenticationService;
     }
     TeacherGuard.prototype.canActivate = function (route, state) {
+        console.log('Teacher Guard');
         var token = JSON.parse(localStorage.getItem('currentUser'));
         if (token) {
-            this.authenticationService.authenticateRole(token)
-                .subscribe(function (data) {
+            return this.authenticationService.authenticateRole(token)
+                .map(function (data) {
                 if (data.role == "student") {
+                    console.log(' TGUARD student');
                     return false;
                 }
                 else if (data.role == "teacher") {
-                    //this.router.navigate(['/teacher']);
+                    console.log(' TGUARD teacher');
                     return true;
                 }
                 else {
@@ -34,8 +38,7 @@ var TeacherGuard = (function () {
                 }
             }, function (error) {
                 return false;
-            });
-            return true;
+            }).first();
         }
         else {
             this.router.navigate(['/login']);

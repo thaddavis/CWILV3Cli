@@ -6,21 +6,21 @@ import { Router } from '@angular/router';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'student.component.html',
-    styleUrls: ['./student.css']
+    templateUrl: 'browse-questions.component.html',
+    styleUrls: ['./browse-questions.css']
 })
 
-export class StudentComponent implements OnInit {
+export class BrowseQuestionsComponent implements OnInit {
     currentUser: User;
     users: User[] = [];
 
     constructor(private userService: UserService, private authenticationService: AuthenticationService, private router: Router) {
-        console.log('Student Component');
+        console.log('Browse Component');
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
     ngOnInit() {
-      //this.loadAllUsers();
+        //this.loadAllUsers();
     }
 
     logout() {

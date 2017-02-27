@@ -25,10 +25,12 @@ var ProfileGuard = (function () {
             this.authenticationService.authenticateRole(token)
                 .subscribe(function (data) {
                 if (data.role == "student") {
+                    console.log('s');
                     _this.router.navigate(['/student']);
                     return true;
                 }
                 else if (data.role == "teacher") {
+                    console.log('t');
                     _this.router.navigate(['/teacher']);
                     return true;
                 }
@@ -38,7 +40,7 @@ var ProfileGuard = (function () {
             }, function (error) {
                 return false;
             });
-            return true;
+            //return true;
         }
         else {
             this.router.navigate(['/login']);

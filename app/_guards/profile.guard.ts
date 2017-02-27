@@ -16,9 +16,11 @@ export class ProfileGuard implements CanActivate {
           .subscribe(
             data => {
               if (data.role == "student") {
+                console.log('s');
                 this.router.navigate(['/student']);
                 return true;
               } else if (data.role == "teacher") {
+                console.log('t');
                 this.router.navigate(['/teacher']);
                 return true;
               } else {
@@ -28,7 +30,8 @@ export class ProfileGuard implements CanActivate {
           error => {
               return false;
           });
-        return true;
+
+          //return true;
       } else {
         this.router.navigate(['/login']);
         return false

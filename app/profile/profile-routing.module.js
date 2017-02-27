@@ -16,12 +16,6 @@ var profileRoutes = [
         children: [
             {
                 path: ''
-                //,
-                //children: [
-                //  { path: '', redirectTo: 'student', pathMatch: 'full' },
-                //  { path: 'teacher', component: TeacherComponent },
-                //  { path: 'student', component: StudentComponent }
-                //]
             }
         ]
     }

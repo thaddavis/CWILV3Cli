@@ -12,21 +12,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var index_1 = require("../_services/index");
+require("rxjs/add/operator/map");
+require("rxjs/add/operator/first");
 var StudentGuard = (function () {
     function StudentGuard(router, authenticationService) {
         this.router = router;
         this.authenticationService = authenticationService;
     }
     StudentGuard.prototype.canActivate = function (route, state) {
+        console.log('Student Guard');
         var token = JSON.parse(localStorage.getItem('currentUser'));
         if (token) {
-            this.authenticationService.authenticateRole(token)
-                .subscribe(function (data) {
+            return this.authenticationService.authenticateRole(token)
+                .map(function (data) {
                 if (data.role == "student") {
-                    //this.router.navigate(['/profile/student']);
+                    console.log(' SGUARD student');
                     return true;
                 }
                 else if (data.role == "teacher") {
+                    console.log(' SGUARD teacher');
                     return false;
                 }
                 else {
@@ -34,39 +38,37 @@ var StudentGuard = (function () {
                 }
             }, function (error) {
                 return false;
-            });
-            return true;
+            }).first();
         }
         else {
             this.router.navigate(['/login']);
             return false;
         }
-    };
-    StudentGuard.prototype.canActivateChild = function (route, state) {
-        var _this = this;
-        var token = JSON.parse(localStorage.getItem('currentUser'));
+        /*
         if (token) {
-            this.authenticationService.authenticateRole(token)
-                .subscribe(function (data) {
+          this.authenticationService.authenticateRole(token)
+            .map(
+              data => {
                 if (data.role == "student") {
-                    _this.router.navigate(['/profile/student']);
-                    return true;
+                  console.log(' SGUARD student');
+                  return true;
+                } else if (data.role == "teacher") {
+                  console.log(' SGUARD teacher');
+                  return false;
+                } else {
+                  return false;
                 }
-                else if (data.role == "teacher") {
-                    _this.router.navigate(['/profile/teacher']);
-                    return true;
-                }
-                else {
-                    return false;
-                }
-            }, function (error) {
+            },
+            error => {
                 return false;
-            });
-            return true;
+            }).first();
+  
+  
+        } else {
+          this.router.navigate(['/login']);
+          return false
         }
-        else {
-            return false;
-        }
+        */
     };
     return StudentGuard;
 }());

@@ -9,6 +9,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var teacher_component_1 = require("./teacher.component");
+var browse_questions_component_1 = require("./browse-questions/browse-questions.component");
+var overview_component_1 = require("./overview/overview.component");
+var reports_component_1 = require("./reports/reports.component");
+var tests_component_1 = require("./tests/tests.component");
 var teacherRoutes = [
     {
         path: '',
@@ -17,8 +21,11 @@ var teacherRoutes = [
             {
                 path: '',
                 children: [
-                    { path: '', pathMatch: 'full' },
-                    { path: 'browse-questions', component: teacher_component_1.TeacherComponent },
+                    { path: '', redirectTo: 'overview', pathMatch: 'full' },
+                    { path: 'overview', component: overview_component_1.OverviewComponent },
+                    { path: 'tests', component: tests_component_1.TestsComponent },
+                    { path: 'reports', component: reports_component_1.ReportsComponent },
+                    { path: 'browse-questions', component: browse_questions_component_1.BrowseQuestionsComponent }
                 ]
             }
         ]

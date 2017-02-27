@@ -1,14 +1,11 @@
-<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top">
   <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">Teacher Dashboard</a>
+  <a class="navbar-brand">Teacher Dashboard</a>
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Settings</a>
       </li>
@@ -19,7 +16,6 @@
         <a class="nav-link" (click)="logout()">Logout</a>
       </li>
     </ul>
-
   </div>
 </nav>
 
@@ -28,81 +24,26 @@
     <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
       <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-          <a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
+          <a class="nav-link" [routerLink]="['/teacher/overview']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+            true}">Overview</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Reports</a>
+          <a class="nav-link" [routerLink]="['/teacher/reports']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+            true}">Reports</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Tests</a>
+          <a class="nav-link" [routerLink]="['/teacher/tests']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+            true}">Tests</a>
         </li>
         <li class="nav-item">
           <!-- <a class="nav-link" href="#">Browse Content</a> -->
-          <a class="nav-link" [routerLink]="['/browse-questions']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-  true}">Browser Content</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Message Boards</a>
+          <a class="nav-link" [routerLink]="['/teacher/browse-questions']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+  true}">Browse Content</a>
         </li>
       </ul>
 
     </nav>
 
-    <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
-      <h1>Dashboard</h1>
-
-      <section class="row text-center placeholders">
-        <div class="col-6 col-sm-3 placeholder">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-          <h4>Class 1</h4>
-          <div class="text-muted">Math</div>
-        </div>
-        <div class="col-6 col-sm-3 placeholder">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-          <h4>Class 2</h4>
-          <span class="text-muted">Geometry</span>
-        </div>
-      </section>
-
-      <h2>Grades</h2>
-      <div class="table-responsive">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Grade</th>
-
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>123231</td>
-              <td>Augostin Correa</td>
-              <td>97%</td>
-
-            </tr>
-            <tr>
-              <td>42345</td>
-              <td>Tadeo Mattheus</td>
-              <td>94%</td>
-
-            </tr>
-            <tr>
-              <td>578492</td>
-              <td>Henrietta Sanchez</td>
-              <td>97%</td>
-
-            </tr>
-            <tr>
-              <td>11/11/2011</td>
-              <td>Counting</td>
-              <td>97%</td>
-
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </main>
+    <router-outlet></router-outlet>
   </div>
 </div>

@@ -6,7 +6,7 @@ import { AppComponent }  from './app.component';
 import { routing }        from './app.routing';
 
 import { AlertComponent } from './_directives/index';
-import { HomeGuard, ProfileGuard, TeacherGuard } from './_guards/index';
+import { HomeGuard, ProfileGuard, TeacherGuard, StudentGuard } from './_guards/index';
 import { AlertService, AuthenticationService, UserService } from './_services/index';
 
 @NgModule({
@@ -23,6 +23,7 @@ import { AlertService, AuthenticationService, UserService } from './_services/in
         HomeGuard,
         ProfileGuard,
         TeacherGuard,
+        StudentGuard,
         AlertService,
         AuthenticationService,
         UserService

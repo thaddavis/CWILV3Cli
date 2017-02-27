@@ -10,6 +10,10 @@ var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var teacher_routing_module_1 = require("./teacher-routing.module");
 var teacher_component_1 = require("./teacher.component");
+var browse_questions_component_1 = require("./browse-questions/browse-questions.component");
+var overview_component_1 = require("./overview/overview.component");
+var reports_component_1 = require("./reports/reports.component");
+var tests_component_1 = require("./tests/tests.component");
 var forms_1 = require("@angular/forms");
 var TeacherModule = (function () {
     function TeacherModule() {
@@ -24,7 +28,11 @@ TeacherModule = __decorate([
             forms_1.FormsModule
         ],
         declarations: [
-            teacher_component_1.TeacherComponent
+            teacher_component_1.TeacherComponent,
+            browse_questions_component_1.BrowseQuestionsComponent,
+            overview_component_1.OverviewComponent,
+            reports_component_1.ReportsComponent,
+            tests_component_1.TestsComponent
         ]
     })
 ], TeacherModule);

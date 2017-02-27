@@ -1,7 +1,11 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { TeacherComponent }           from './teacher.component';
+import { TeacherComponent } from './teacher.component';
+import { BrowseQuestionsComponent } from './browse-questions/browse-questions.component';
+import { OverviewComponent } from './overview/overview.component';
+import { ReportsComponent } from './reports/reports.component';
+import { TestsComponent } from './tests/tests.component';
 
 import { TeacherGuard } from '../_guards/index';
 
@@ -11,11 +15,13 @@ const teacherRoutes: Routes = [
     component: TeacherComponent,
     children: [
       {
-        path: ''
+        path: '',
         children: [
-          { path: '', pathMatch: 'full' },
-          { path: 'browse-questions', component: TeacherComponent },
-        //  { path: 'student', component: StudentComponent }
+          { path: '', redirectTo: 'overview', pathMatch: 'full' },
+          { path: 'overview', component: OverviewComponent },
+          { path: 'tests', component: TestsComponent },
+          { path: 'reports', component: ReportsComponent },
+          { path: 'browse-questions', component: BrowseQuestionsComponent }
         ]
       }
     ]
