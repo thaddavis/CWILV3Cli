@@ -11,7 +11,6 @@ export class TeacherGuard implements CanActivate {
     constructor(private router: Router, private authenticationService: AuthenticationService) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-      console.log('Teacher Guard');
       let token = JSON.parse(localStorage.getItem('currentUser'))
 
       if (token) {
@@ -19,10 +18,8 @@ export class TeacherGuard implements CanActivate {
           .map(
             data => {
               if (data.role == "student") {
-                console.log(' TGUARD student');
                 return false;
               } else if (data.role == "teacher") {
-                console.log(' TGUARD teacher');
                 return true;
               } else {
                 return false;

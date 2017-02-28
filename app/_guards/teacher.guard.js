@@ -21,17 +21,14 @@ var TeacherGuard = (function () {
         this.authenticationService = authenticationService;
     }
     TeacherGuard.prototype.canActivate = function (route, state) {
-        console.log('Teacher Guard');
         var token = JSON.parse(localStorage.getItem('currentUser'));
         if (token) {
             return this.authenticationService.authenticateRole(token)
                 .map(function (data) {
                 if (data.role == "student") {
-                    console.log(' TGUARD student');
                     return false;
                 }
                 else if (data.role == "teacher") {
-                    console.log(' TGUARD teacher');
                     return true;
                 }
                 else {

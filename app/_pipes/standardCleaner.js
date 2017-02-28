@@ -11,6 +11,9 @@ var StandardCleanerPipe = (function () {
     function StandardCleanerPipe() {
     }
     StandardCleanerPipe.prototype.transform = function (s) {
+        if (!s) {
+            return '';
+        }
         return s.substring((s.indexOf('CONTENT.') + ('CONTENT.').length));
     };
     return StandardCleanerPipe;

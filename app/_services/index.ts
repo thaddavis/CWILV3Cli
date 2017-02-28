@@ -3,3 +3,4 @@ export * from './authentication.service';
 export * from './user.service';
 export * from './question.service';
 export * from './gradeStandard.service';
+export * from './shoppingCart.service';

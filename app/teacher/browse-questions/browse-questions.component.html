@@ -44,7 +44,7 @@
         <div class="col-sm-6 col-md-7 scrollable-detail">
           <ul class="list-group">
               <li *ngFor="let question of filteredQuestions" class="list-group-item">
-                <a (click)="loadQuestionDetail()" class="list-group-item list-group-item-action flex-column align-items-start">
+                <a (click)="loadQuestionDetail(question)" class="list-group-item list-group-item-action flex-column align-items-start">
                   <div class="d-flex w-100 justify-content-between">
                     <p style="font-size:10px;" class="mb-1">{{question.standard}}</p>
                   </div>

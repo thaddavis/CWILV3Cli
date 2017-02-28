@@ -7,7 +7,7 @@ import { routing }        from './app.routing';
 
 import { AlertComponent } from './_directives/index';
 import { HomeGuard, ProfileGuard, TeacherGuard, StudentGuard } from './_guards/index';
-import { AlertService, AuthenticationService, UserService } from './_services/index';
+import { AlertService, AuthenticationService, UserService, ShoppingCartService } from './_services/index';
 
 @NgModule({
     imports: [
@@ -26,6 +26,7 @@ import { AlertService, AuthenticationService, UserService } from './_services/in
         StudentGuard,
         AlertService,
         AuthenticationService,
+        ShoppingCartService,
         UserService
     ],
     bootstrap: [AppComponent]

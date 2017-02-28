@@ -13,26 +13,20 @@ var core_1 = require("@angular/core");
 var index_1 = require("../../_services/index");
 var router_1 = require("@angular/router");
 var TestsComponent = (function () {
-    function TestsComponent(userService, authenticationService, router) {
+    function TestsComponent(userService, authenticationService, router, shoppingCartService) {
         this.userService = userService;
         this.authenticationService = authenticationService;
         this.router = router;
-        this.users = [];
-        console.log('Browse Component');
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.shoppingCartService = shoppingCartService;
+        this.shoppingCart = [];
+        console.log('Test Component');
     }
     TestsComponent.prototype.ngOnInit = function () {
-        //this.loadAllUsers();
+        this.loadTestsCart();
     };
-    TestsComponent.prototype.logout = function () {
-        this.authenticationService.logout();
-        this.router.navigate(['/']);
-    };
-    TestsComponent.prototype.deleteUser = function (id) {
-        //this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
-    };
-    TestsComponent.prototype.loadAllUsers = function () {
-        //this.userService.getAll().subscribe(users => { this.users = users; });
+    TestsComponent.prototype.loadTestsCart = function () {
+        this.shoppingCart = this.shoppingCartService.get();
+        console.log(this.shoppingCart);
     };
     return TestsComponent;
 }());
@@ -42,7 +36,10 @@ TestsComponent = __decorate([
         templateUrl: 'tests.component.html',
         styleUrls: ['./tests.css']
     }),
-    __metadata("design:paramtypes", [index_1.UserService, index_1.AuthenticationService, router_1.Router])
+    __metadata("design:paramtypes", [index_1.UserService,
+        index_1.AuthenticationService,
+        router_1.Router,
+        index_1.ShoppingCartService])
 ], TestsComponent);
 exports.TestsComponent = TestsComponent;
 //# sourceMappingURL=tests.component.js.map

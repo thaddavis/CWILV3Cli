@@ -37,6 +37,7 @@ AppModule = __decorate([
             index_2.StudentGuard,
             index_3.AlertService,
             index_3.AuthenticationService,
+            index_3.ShoppingCartService,
             index_3.UserService
         ],
         bootstrap: [app_component_1.AppComponent]

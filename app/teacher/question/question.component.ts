@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { User } from '../../_models/index';
-import { UserService, AuthenticationService } from '../../_services/index';
+import { User, Question } from '../../_models/index';
+import { UserService, AuthenticationService, QuestionService, ShoppingCartService } from '../../_services/index';
 import { Router } from '@angular/router';
 import { ActivatedRoute }     from '@angular/router';
-import { Question } from '../';
+
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -15,18 +15,40 @@ import 'rxjs/add/operator/map';
 
 export class QuestionComponent implements OnInit {
 
+    currentQuestionId: string;
     currentQuestion: Question;
 
-    constructor(private router: Router, private route: ActivatedRoute) {
-        console.log('Specific Question Component');
+    constructor(
+      private router: Router,
+      private route: ActivatedRoute,
+      private questionService: QuestionService,
+      private shoppingCartService: ShoppingCartService
+    ) {
+        console.log('Question Component');
     }
 
     ngOnInit() {
 
       this.route.queryParams.subscribe(params => {
-          console.log(params["firstname"]);
-          console.log(params["lastname"]);
+
+          this.currentQuestionId = params["question_id"];
+          this.loadQuestion(this.currentQuestionId);
       });
     }
+
+    loadQuestion(currentQuestionId: string) {
+
+        this.questionService.getById(currentQuestionId).subscribe(question => {
+          this.currentQuestion = question['question'];
+
+          console.log(this.currentQuestion);
+        });
+    }
+
+    addToTestsCart() {
+      this.shoppingCartService.add(this.currentQuestion);
+      console.log(this.shoppingCartService.get());
+    }
+
 
 }

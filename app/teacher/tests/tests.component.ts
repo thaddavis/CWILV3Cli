@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { User } from '../../_models/index';
-import { UserService, AuthenticationService } from '../../_services/index';
+import { UserService, AuthenticationService, ShoppingCartService } from '../../_services/index';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,30 +11,27 @@ import { Router } from '@angular/router';
 })
 
 export class TestsComponent implements OnInit {
-    currentUser: User;
-    users: User[] = [];
 
-    constructor(private userService: UserService, private authenticationService: AuthenticationService, private router: Router) {
-        console.log('Browse Component');
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    shoppingCart: any[] = [];
+
+    constructor(
+      private userService: UserService,
+      private authenticationService: AuthenticationService,
+      private router: Router,
+      private shoppingCartService: ShoppingCartService
+    ) {
+        console.log('Test Component');
+
     }
 
     ngOnInit() {
-        //this.loadAllUsers();
+        this.loadTestsCart()
     }
 
-    logout() {
 
-      this.authenticationService.logout();
-      this.router.navigate(['/']);
+    private loadTestsCart() {
+        this.shoppingCart = this.shoppingCartService.get();
 
-    }
-
-    deleteUser(id: number) {
-        //this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
-    }
-
-    private loadAllUsers() {
-        //this.userService.getAll().subscribe(users => { this.users = users; });
+        console.log(this.shoppingCart);
     }
 }

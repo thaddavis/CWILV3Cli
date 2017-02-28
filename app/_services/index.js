@@ -8,4 +8,5 @@ __export(require("./authentication.service"));
 __export(require("./user.service"));
 __export(require("./question.service"));
 __export(require("./gradeStandard.service"));
+__export(require("./shoppingCart.service"));
 //# sourceMappingURL=index.js.map

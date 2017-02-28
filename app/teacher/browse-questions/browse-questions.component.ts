@@ -14,8 +14,8 @@ export class BrowseQuestionsComponent implements OnInit {
     questions: Question[] = [];
     filteredQuestions: Question[] = [];
 
-    domainsAndStandards: Any;
-    domainKeys: Any;
+    domainsAndStandards: any;
+    domainKeys: any;
 
     constructor(
       private userService: UserService,
@@ -34,7 +34,6 @@ export class BrowseQuestionsComponent implements OnInit {
 
     loadAllQuestions() {
         this.questionService.getAll().subscribe(questions => {
-          console.log(questions['questions']);
           this.questions = questions['questions'];
           this.filteredQuestions = this.questions;
         });
@@ -58,15 +57,13 @@ export class BrowseQuestionsComponent implements OnInit {
       var queryStandard = standard;
 
       this.filteredQuestions = this.questions.filter(q => q.standard === queryStandard)
-      console.log(this.filteredQuestions);
     }
 
-    loadQuestionDetail() {
+    loadQuestionDetail(question: any) {
 
         let navigationExtras: NavigationExtras = {
             queryParams: {
-                "firstname": "Nic",
-                "lastname": "Raboy"
+              "question_id": question._id
             }
         };
 

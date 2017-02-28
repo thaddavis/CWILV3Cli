@@ -15,7 +15,7 @@ export class QuestionService {
         );
     }
 
-    getById(id: number) {
+    getById(id: string) {
         return this.http.get(this.questionServerUrl + '/questions/' + id, this.jwt()).map((response: Response) => response.json());
     }
 

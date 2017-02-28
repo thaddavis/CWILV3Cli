@@ -1,6 +1,26 @@
-<main class="col-sm-4 offset-sm-4 col-md-9 offset-md-3 pt-3">
-  <div class="container">
-    <h1>Tests</h1>
-  </div>
+<div class="container-fluid"><!-- To get it to take up the whole width -->
 
-</main>
+      <div class="row main-content">
+        <div class="col-sm-3 offset-sm-2 col-md-3 offset-md-2">
+
+          <div class="container well">
+            <h3>Cart</h3>
+
+
+            <div id="shopping-cart">
+              <ul>
+                <li *ngFor='let s of shoppingCart; let i = index; '>
+                  {{ s.domain }} -- {{ i }}
+                </li>
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+        <div class="col-sm-6 col-md-7 scrollable-detail">
+
+        </div>
+      </div>
+</div>

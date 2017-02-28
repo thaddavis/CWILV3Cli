@@ -22,7 +22,7 @@ const teacherRoutes: Routes = [
           { path: 'overview', component: OverviewComponent },
           { path: 'tests', component: TestsComponent },
           { path: 'reports', component: ReportsComponent },
-          { path: 'browse-questions', component: BrowseQuestionsComponent }
+          { path: 'browse-questions', component: BrowseQuestionsComponent },
           { path: 'question', component: QuestionComponent }
         ]
       }

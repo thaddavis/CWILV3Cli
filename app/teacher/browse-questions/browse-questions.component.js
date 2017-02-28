@@ -29,7 +29,6 @@ var BrowseQuestionsComponent = (function () {
     BrowseQuestionsComponent.prototype.loadAllQuestions = function () {
         var _this = this;
         this.questionService.getAll().subscribe(function (questions) {
-            console.log(questions['questions']);
             _this.questions = questions['questions'];
             _this.filteredQuestions = _this.questions;
         });
@@ -48,13 +47,11 @@ var BrowseQuestionsComponent = (function () {
         }
         var queryStandard = standard;
         this.filteredQuestions = this.questions.filter(function (q) { return q.standard === queryStandard; });
-        console.log(this.filteredQuestions);
     };
-    BrowseQuestionsComponent.prototype.loadQuestionDetail = function () {
+    BrowseQuestionsComponent.prototype.loadQuestionDetail = function (question) {
         var navigationExtras = {
             queryParams: {
-                "firstname": "Nic",
-                "lastname": "Raboy"
+                "question_id": question._id
             }
         };
         this.router.navigate(['/teacher/question'], navigationExtras);
