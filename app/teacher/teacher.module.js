@@ -15,6 +15,7 @@ var browse_questions_component_1 = require("./browse-questions/browse-questions.
 var overview_component_1 = require("./overview/overview.component");
 var reports_component_1 = require("./reports/reports.component");
 var tests_component_1 = require("./tests/tests.component");
+var question_component_1 = require("./question/question.component");
 var index_2 = require("../_pipes/index");
 var forms_1 = require("@angular/forms");
 var TeacherModule = (function () {
@@ -35,10 +36,12 @@ TeacherModule = __decorate([
             overview_component_1.OverviewComponent,
             reports_component_1.ReportsComponent,
             tests_component_1.TestsComponent,
+            question_component_1.QuestionComponent,
             index_2.StandardCleanerPipe
         ],
         providers: [
-            index_1.QuestionService
+            index_1.QuestionService,
+            index_1.GradeStandardService
         ]
     })
 ], TeacherModule);

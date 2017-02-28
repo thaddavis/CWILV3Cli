@@ -4,6 +4,11 @@
 
 .card-block ul {
   font-size: 10px;
-  margin-left: -25px;
-  list-style-type: none; 
+  /*margin-left: -25px;*/
+  list-style-type: circle;
+}
+
+.scrollable-detail {
+  overflow-y: scroll;
+  height: 750px; /* May need to be set somehow */
 }

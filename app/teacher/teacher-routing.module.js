@@ -13,6 +13,7 @@ var browse_questions_component_1 = require("./browse-questions/browse-questions.
 var overview_component_1 = require("./overview/overview.component");
 var reports_component_1 = require("./reports/reports.component");
 var tests_component_1 = require("./tests/tests.component");
+var question_component_1 = require("./question/question.component");
 var teacherRoutes = [
     {
         path: '',
@@ -25,7 +26,8 @@ var teacherRoutes = [
                     { path: 'overview', component: overview_component_1.OverviewComponent },
                     { path: 'tests', component: tests_component_1.TestsComponent },
                     { path: 'reports', component: reports_component_1.ReportsComponent },
-                    { path: 'browse-questions', component: browse_questions_component_1.BrowseQuestionsComponent }
+                    { path: 'browse-questions', component: browse_questions_component_1.BrowseQuestionsComponent },
+                    { path: 'question', component: question_component_1.QuestionComponent }
                 ]
             }
         ]
