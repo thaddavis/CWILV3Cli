@@ -15,6 +15,7 @@ import { OverviewComponent } from './overview/overview.component';
 import { ReportsComponent } from './reports/reports.component';
 import { TestsComponent } from './tests/tests.component';
 import { QuestionComponent } from './question/question.component';
+import { StudentDetailComponent } from './student-detail/student-detail.component';
 
 import { StandardCleanerPipe } from '../_pipes/index';
 
@@ -37,6 +38,7 @@ import { MakeDraggable, MakeDroppable } from './shared/index';
     TestsComponent,
     QuestionComponent,
     TodoListComponent,
+    StudentDetailComponent,
     StandardCleanerPipe,
     TodoComponent,
     MakeDraggable,

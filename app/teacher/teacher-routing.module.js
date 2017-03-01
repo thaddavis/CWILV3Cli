@@ -14,6 +14,7 @@ var overview_component_1 = require("./overview/overview.component");
 var reports_component_1 = require("./reports/reports.component");
 var tests_component_1 = require("./tests/tests.component");
 var question_component_1 = require("./question/question.component");
+var student_detail_component_1 = require("./student-detail/student-detail.component");
 var teacherRoutes = [
     {
         path: '',
@@ -27,6 +28,7 @@ var teacherRoutes = [
                     { path: 'tests', component: tests_component_1.TestsComponent },
                     { path: 'reports', component: reports_component_1.ReportsComponent },
                     { path: 'browse-questions', component: browse_questions_component_1.BrowseQuestionsComponent },
+                    { path: 'student-detail', component: student_detail_component_1.StudentDetailComponent },
                     { path: 'question', component: question_component_1.QuestionComponent }
                 ]
             }

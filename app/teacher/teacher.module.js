@@ -19,6 +19,7 @@ var overview_component_1 = require("./overview/overview.component");
 var reports_component_1 = require("./reports/reports.component");
 var tests_component_1 = require("./tests/tests.component");
 var question_component_1 = require("./question/question.component");
+var student_detail_component_1 = require("./student-detail/student-detail.component");
 var index_2 = require("../_pipes/index");
 var index_3 = require("./todo-list/index");
 var index_4 = require("./todo/index");
@@ -44,6 +45,7 @@ TeacherModule = __decorate([
             tests_component_1.TestsComponent,
             question_component_1.QuestionComponent,
             index_3.TodoListComponent,
+            student_detail_component_1.StudentDetailComponent,
             index_2.StandardCleanerPipe,
             index_4.TodoComponent,
             index_5.MakeDraggable,

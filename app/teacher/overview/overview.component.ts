@@ -23,18 +23,15 @@ export class OverviewComponent implements OnInit {
         //this.loadAllUsers();
     }
 
-    logout() {
-
-      this.authenticationService.logout();
-      this.router.navigate(['/']);
-
-    }
-
     deleteUser(id: number) {
         //this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
     }
 
     private loadAllUsers() {
         //this.userService.getAll().subscribe(users => { this.users = users; });
+    }
+
+    loadStudentDetail() {
+        this.router.navigate(['/teacher/student-detail']);
     }
 }

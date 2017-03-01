@@ -7,6 +7,7 @@ import { OverviewComponent } from './overview/overview.component';
 import { ReportsComponent } from './reports/reports.component';
 import { TestsComponent } from './tests/tests.component';
 import { QuestionComponent } from './question/question.component';
+import { StudentDetailComponent } from './student-detail/student-detail.component';
 
 import { TeacherGuard } from '../_guards/index';
 
@@ -23,6 +24,7 @@ const teacherRoutes: Routes = [
           { path: 'tests', component: TestsComponent },
           { path: 'reports', component: ReportsComponent },
           { path: 'browse-questions', component: BrowseQuestionsComponent },
+          { path: 'student-detail', component: StudentDetailComponent },
           { path: 'question', component: QuestionComponent }
         ]
       }

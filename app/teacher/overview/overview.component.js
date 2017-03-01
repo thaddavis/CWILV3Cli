@@ -24,15 +24,14 @@ var OverviewComponent = (function () {
     OverviewComponent.prototype.ngOnInit = function () {
         //this.loadAllUsers();
     };
-    OverviewComponent.prototype.logout = function () {
-        this.authenticationService.logout();
-        this.router.navigate(['/']);
-    };
     OverviewComponent.prototype.deleteUser = function (id) {
         //this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
     };
     OverviewComponent.prototype.loadAllUsers = function () {
         //this.userService.getAll().subscribe(users => { this.users = users; });
+    };
+    OverviewComponent.prototype.loadStudentDetail = function () {
+        this.router.navigate(['/teacher/student-detail']);
     };
     return OverviewComponent;
 }());
