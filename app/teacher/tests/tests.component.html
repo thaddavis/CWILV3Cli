@@ -10,7 +10,11 @@
             <div id="shopping-cart">
               <ul>
                 <li *ngFor='let s of shoppingCart; let i = index; '>
-                  {{ s.domain }} -- {{ s.standard }}  [ {{ i }} ]
+                  {{ s.domain }}
+                  <br/>
+                  {{ s.standard | standardCleaner }}
+                  <br/>
+                  [ {{ i }} ]
                 </li>
               </ul>
 
@@ -19,7 +23,16 @@
           </div>
 
         </div>
-        <div class="col-sm-6 col-md-7 scrollable-detail">
+        <div class="col-sm-7 col-md-7">
+
+          <todo-list></todo-list>
+          
+          <div>
+              <div class="text-center">
+                  <button (click)="buildTest()" type="button" class="btn btn-success">Build Test</button>
+              </div>
+          </div>
+
 
         </div>
       </div>

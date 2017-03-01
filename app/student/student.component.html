@@ -1,3 +1,55 @@
+<!-- <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top">
+  <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand">Teacher Dashboard</a>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Settings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div>
+    <nav class="col-sm-2 col-md-2 hidden-xs-down bg-faded sidebar">
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/teacher/overview']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+            true}">Overview</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/teacher/reports']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+            true}">Reports</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/teacher/tests']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+            true}">Tests</a>
+        </li>
+        <li class="nav-item">
+
+          <a class="nav-link" [routerLink]="['/teacher/browse-questions']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+  true}">Browse</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div> -->
+
+
 <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top">
   <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -20,7 +72,7 @@
 </nav>
 
 <div class="container-fluid">
-  <div class="row">
+  <div>
     <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
       <ul class="nav nav-pills flex-column">
         <li class="nav-item">

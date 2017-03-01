@@ -24,6 +24,9 @@ var TestsComponent = (function () {
     TestsComponent.prototype.ngOnInit = function () {
         this.loadTestsCart();
     };
+    TestsComponent.prototype.buildTest = function () {
+        console.log('asdf');
+    };
     TestsComponent.prototype.loadTestsCart = function () {
         this.shoppingCart = this.shoppingCartService.get();
     };

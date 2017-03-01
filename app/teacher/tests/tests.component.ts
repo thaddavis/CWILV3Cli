@@ -25,9 +25,12 @@ export class TestsComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.loadTestsCart()
+      this.loadTestsCart()
     }
 
+    buildTest() {
+      console.log('asdf');
+    }
 
     private loadTestsCart() {
         this.shoppingCart = this.shoppingCartService.get();

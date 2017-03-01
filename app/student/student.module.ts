@@ -1,5 +1,6 @@
 import { NgModule }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
+import { ChartModule } from '../charts/chart.module';
 
 import { StudentRoutingModule }       from './student-routing.module';
 
@@ -15,7 +16,8 @@ import { FormsModule }    from '@angular/forms';
   imports: [
     CommonModule,
     StudentRoutingModule,
-    FormsModule
+    FormsModule,
+    ChartModule
   ],
   declarations: [
     StudentComponent,

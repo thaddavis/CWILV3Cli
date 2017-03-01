@@ -3,3 +3,7 @@
   /*margin-left: -25px;*/
   list-style-type: circle;
 }
+
+.row, .col-md-4, .col-md-8, .col-md-3, .col-md-7  {
+  /*border: 2px solid pink; For showing the div borders */
+}

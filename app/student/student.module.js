@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
+var chart_module_1 = require("../charts/chart.module");
 var student_routing_module_1 = require("./student-routing.module");
 var student_component_1 = require("./student.component");
 var browse_questions_component_1 = require("./browse-questions/browse-questions.component");
@@ -25,7 +26,8 @@ StudentModule = __decorate([
         imports: [
             common_1.CommonModule,
             student_routing_module_1.StudentRoutingModule,
-            forms_1.FormsModule
+            forms_1.FormsModule,
+            chart_module_1.ChartModule
         ],
         declarations: [
             student_component_1.StudentComponent,

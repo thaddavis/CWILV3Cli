@@ -1,9 +1,13 @@
 import { NgModule }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
+import { FormsModule }    from '@angular/forms';
+import { ChartModule } from '../charts/chart.module';
 
 import { TeacherRoutingModule }       from './teacher-routing.module';
 
 import { QuestionService, GradeStandardService } from '../_services/index';
+
+import { TodoService } from './todo-list/todo-list.service';
 
 import { TeacherComponent } from './teacher.component';
 import { BrowseQuestionsComponent } from './browse-questions/browse-questions.component';
@@ -14,13 +18,16 @@ import { QuestionComponent } from './question/question.component';
 
 import { StandardCleanerPipe } from '../_pipes/index';
 
-import { FormsModule }    from '@angular/forms';
+import { TodoListComponent } from './todo-list/index';
+import { TodoComponent, Todo } from './todo/index';
+import { MakeDraggable, MakeDroppable } from './shared/index';
 
 @NgModule({
   imports: [
     CommonModule,
     TeacherRoutingModule,
-    FormsModule
+    FormsModule,
+    ChartModule
   ],
   declarations: [
     TeacherComponent,
@@ -29,9 +36,14 @@ import { FormsModule }    from '@angular/forms';
     ReportsComponent,
     TestsComponent,
     QuestionComponent,
-    StandardCleanerPipe
+    TodoListComponent,
+    StandardCleanerPipe,
+    TodoComponent,
+    MakeDraggable,
+    MakeDroppable
   ],
   providers: [
+    TodoService,
     QuestionService,
     GradeStandardService
   ]
