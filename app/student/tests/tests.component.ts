@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
     styleUrls: ['./tests.css']
 })
 
-export class TestsComponent implements OnInit {
+export class TestsComponent {
 
-    
+
 
     constructor(private userService: UserService, private authenticationService: AuthenticationService, private router: Router) {
       console.log('Tests Component');
