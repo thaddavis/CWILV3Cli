@@ -17,23 +17,8 @@ var TestsComponent = (function () {
         this.userService = userService;
         this.authenticationService = authenticationService;
         this.router = router;
-        this.users = [];
-        console.log('Browse Component');
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        console.log('Tests Component');
     }
-    TestsComponent.prototype.ngOnInit = function () {
-        //this.loadAllUsers();
-    };
-    TestsComponent.prototype.logout = function () {
-        this.authenticationService.logout();
-        this.router.navigate(['/']);
-    };
-    TestsComponent.prototype.deleteUser = function (id) {
-        //this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
-    };
-    TestsComponent.prototype.loadAllUsers = function () {
-        //this.userService.getAll().subscribe(users => { this.users = users; });
-    };
     return TestsComponent;
 }());
 TestsComponent = __decorate([
