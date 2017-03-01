@@ -29,6 +29,7 @@ export class TeacherGuard implements CanActivate {
       } else {
         this.router.navigate(['/login']);
         return Observable.of(false);
+        //return false;
       }
 
     }

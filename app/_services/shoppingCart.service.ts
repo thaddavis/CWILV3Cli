@@ -7,32 +7,39 @@ export class ShoppingCartService {
 
   constructor() {
 
-      this.products = [];
+      if (!JSON.parse(localStorage.getItem('testsCart'))) {
+        localStorage.setItem('testsCart', JSON.stringify([]));
+      }
 
   }
 
   add(product: any){
 
+      this.products = JSON.parse(localStorage.getItem('testsCart'));
       this.products.push(product);
+      localStorage.setItem('testsCart', JSON.stringify(this.products));
+
   }
 
   remove(index: number) {
 
+      this.products = JSON.parse(localStorage.getItem('testsCart'));
       if (index > -1) {
           this.products.splice(index, 1);
       }
+      localStorage.setItem('testsCart', JSON.stringify(this.products));
 
   }
 
   clear() {
 
-      this.products = [];
+      localStorage.setItem('testsCart', JSON.stringify([]));
 
   }
 
   get() {
 
-    return this.products;
+    return JSON.parse(localStorage.getItem('testsCart'));
 
   }
 

@@ -31,7 +31,5 @@ export class TestsComponent implements OnInit {
 
     private loadTestsCart() {
         this.shoppingCart = this.shoppingCartService.get();
-
-        console.log(this.shoppingCart);
     }
 }

@@ -26,7 +26,6 @@ var TestsComponent = (function () {
     };
     TestsComponent.prototype.loadTestsCart = function () {
         this.shoppingCart = this.shoppingCartService.get();
-        console.log(this.shoppingCart);
     };
     return TestsComponent;
 }());

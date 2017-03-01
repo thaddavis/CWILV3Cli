@@ -39,6 +39,7 @@ var TeacherGuard = (function () {
         else {
             this.router.navigate(['/login']);
             return Observable_1.Observable.of(false);
+            //return false;
         }
     };
     return TeacherGuard;

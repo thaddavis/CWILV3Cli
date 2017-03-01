@@ -10,7 +10,7 @@
             <div id="shopping-cart">
               <ul>
                 <li *ngFor='let s of shoppingCart; let i = index; '>
-                  {{ s.domain }} -- {{ i }}
+                  {{ s.domain }} -- {{ s.standard }}  [ {{ i }} ]
                 </li>
               </ul>
 

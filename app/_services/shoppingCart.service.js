@@ -12,21 +12,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var ShoppingCartService = (function () {
     function ShoppingCartService() {
-        this.products = [];
+        if (!JSON.parse(localStorage.getItem('testsCart'))) {
+            localStorage.setItem('testsCart', JSON.stringify([]));
+        }
     }
     ShoppingCartService.prototype.add = function (product) {
+        this.products = JSON.parse(localStorage.getItem('testsCart'));
         this.products.push(product);
+        localStorage.setItem('testsCart', JSON.stringify(this.products));
     };
     ShoppingCartService.prototype.remove = function (index) {
+        this.products = JSON.parse(localStorage.getItem('testsCart'));
         if (index > -1) {
             this.products.splice(index, 1);
         }
+        localStorage.setItem('testsCart', JSON.stringify(this.products));
     };
     ShoppingCartService.prototype.clear = function () {
-        this.products = [];
+        localStorage.setItem('testsCart', JSON.stringify([]));
     };
     ShoppingCartService.prototype.get = function () {
-        return this.products;
+        return JSON.parse(localStorage.getItem('testsCart'));
     };
     return ShoppingCartService;
 }());

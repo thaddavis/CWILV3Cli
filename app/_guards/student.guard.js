@@ -42,32 +42,8 @@ var StudentGuard = (function () {
         else {
             this.router.navigate(['/login']);
             return Observable_1.Observable.of(false);
+            //return false;
         }
-        /*
-        if (token) {
-          this.authenticationService.authenticateRole(token)
-            .map(
-              data => {
-                if (data.role == "student") {
-                  console.log(' SGUARD student');
-                  return true;
-                } else if (data.role == "teacher") {
-                  console.log(' SGUARD teacher');
-                  return false;
-                } else {
-                  return false;
-                }
-            },
-            error => {
-                return false;
-            }).first();
-  
-  
-        } else {
-          this.router.navigate(['/login']);
-          return false
-        }
-        */
     };
     return StudentGuard;
 }());
