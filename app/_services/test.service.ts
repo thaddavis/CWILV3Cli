@@ -15,6 +15,13 @@ export class TestService {
         );   
     }
 
+    getTestsById(testID: string) {
+
+        return this.http.get(this.testServerUrl + '/tests/' + testID, this.jwt()).map((response: Response) =>
+          response.json()
+        );   
+    }
+
     getTestsForClass(classID: any) {
 
         console.log('getTestsForClass');
@@ -25,11 +32,13 @@ export class TestService {
     
     }
 
+
+
     create(t: any) {
         
-        var questions = [];
+        var questions:any[] = [];
 
-        t.forEach((item, index) => {
+        t.forEach((item:any, index:any) => {
             questions.push(item._id);
         });
 

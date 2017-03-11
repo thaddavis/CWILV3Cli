@@ -12,17 +12,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var index_1 = require("../../_services/index");
 var router_1 = require("@angular/router");
+require("rxjs/add/operator/map");
 var OverviewComponent = (function () {
     function OverviewComponent(userService, authenticationService, router) {
         this.userService = userService;
         this.authenticationService = authenticationService;
         this.router = router;
         this.users = [];
+        this.userID = '';
         console.log('Overview Component');
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
     OverviewComponent.prototype.ngOnInit = function () {
         //this.loadAllUsers();
+        var _this = this;
+        this.authenticationService.authenticated('').subscribe(function (data) {
+            console.log('auth service to get student id');
+            _this.userID = data.userID;
+        });
     };
     OverviewComponent.prototype.logout = function () {
         this.authenticationService.logout();

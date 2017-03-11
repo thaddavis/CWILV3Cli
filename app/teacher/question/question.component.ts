@@ -71,6 +71,7 @@ export class QuestionComponent implements OnInit {
     }
 
     addToTestsCart() {
+      console.log("addToTestsCart");
       this.shoppingCartService.add(this.currentQuestion);
       console.log(this.shoppingCartService.get());
     }

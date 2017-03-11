@@ -21,6 +21,11 @@ var TestService = (function () {
             return response.json();
         });
     };
+    TestService.prototype.getTestsById = function (testID) {
+        return this.http.get(this.testServerUrl + '/tests/' + testID, this.jwt()).map(function (response) {
+            return response.json();
+        });
+    };
     TestService.prototype.getTestsForClass = function (classID) {
         console.log('getTestsForClass');
         return this.http.get(this.testServerUrl + '/testsForClass/' + classID, this.jwt()).map(function (response) {

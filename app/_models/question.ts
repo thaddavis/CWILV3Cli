@@ -7,4 +7,5 @@ export class Question {
 	standard: any;
 	genre: any;
 	questionFile: any;
+	questionFileGraded: any;
 }

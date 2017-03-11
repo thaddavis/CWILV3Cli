@@ -77,7 +77,7 @@ export class OverviewComponent implements OnInit {
         this.classCodeRef.nativeElement.appendChild(fragment);
         
         this.classStudentService.getAll(this.selectedClassId).subscribe(students => {
-            students["classStudents"].forEach((i) => {                
+            students["classStudents"].forEach((i:any) => {                
                 var studentID = i.studentID;
                 this.userService.getById(studentID).subscribe(student => {        
                     this.studentsOfSelectedClass.push( Object.assign({}, { 

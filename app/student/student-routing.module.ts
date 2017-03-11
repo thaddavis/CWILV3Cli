@@ -7,6 +7,9 @@ import { OverviewComponent } from './overview/overview.component';
 import { ReportsComponent } from './reports/reports.component';
 import { TestsComponent } from './tests/tests.component';
 
+import { TakeTestComponent } from './take-test/take-test.component';
+
+
 import { StudentGuard } from '../_guards/index';
 
 const studentRoutes: Routes = [
@@ -21,7 +24,8 @@ const studentRoutes: Routes = [
           { path: 'overview', component: OverviewComponent },
           { path: 'tests', component: TestsComponent },
           { path: 'reports', component: ReportsComponent },
-          { path: 'browse-questions', component: BrowseQuestionsComponent }
+          { path: 'browse-questions', component: BrowseQuestionsComponent },
+          { path: 'take-test', component: TakeTestComponent }
         ]
       }
     ]

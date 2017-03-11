@@ -42,9 +42,7 @@ var TestsComponent = (function () {
                 for (var _b = 0, classIDs_1 = classIDs; _b < classIDs_1.length; _b++) {
                     var i = classIDs_1[_b];
                     _this.classOfTeacherService.getById(i).subscribe(function (data) {
-                        console.log("YAARRR");
                         _this.studentClasses.push(data["classOfTeacher"]);
-                        console.log(_this.studentClasses);
                     });
                 }
             });
@@ -54,13 +52,29 @@ var TestsComponent = (function () {
         var _this = this;
         this.testsOfSelectedClass = [];
         this.testService.getTestsForClass(classID).subscribe(function (data) {
-            console.log("RRREEDDD");
-            console.log(data);
+            var testIDs = [];
             for (var _i = 0, _a = data["tests"]; _i < _a.length; _i++) {
                 var i = _a[_i];
-                _this.testsOfSelectedClass.push(i);
+                if (testIDs.indexOf(i.testID) == -1) {
+                    testIDs.push(i.testID);
+                }
+            }
+            for (var _b = 0, testIDs_1 = testIDs; _b < testIDs_1.length; _b++) {
+                var i = testIDs_1[_b];
+                _this.testService.getTestsById(i).subscribe(function (data) {
+                    _this.testsOfSelectedClass.push(data["test"]);
+                    console.log(_this.testsOfSelectedClass);
+                });
             }
         });
+    };
+    TestsComponent.prototype.takeTest = function (t) {
+        var navigationExtras = {
+            queryParams: {
+                "testInfo": JSON.stringify(t)
+            }
+        };
+        this.router.navigate(['/student/take-test'], navigationExtras);
     };
     return TestsComponent;
 }());

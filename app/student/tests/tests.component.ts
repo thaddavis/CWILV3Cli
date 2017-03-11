@@ -9,7 +9,7 @@ import {
 	ClassOfTeacherService,
     TestService
 } from '../../_services/index';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
     moduleId: module.id,
@@ -19,8 +19,8 @@ import { Router } from '@angular/router';
 
 export class TestsComponent {
 
-	studentClasses = [];
-    testsOfSelectedClass = [];
+	studentClasses:any[] = [];
+    testsOfSelectedClass:any[] = [];
 
     constructor(
     	private userService: UserService, 
@@ -61,9 +61,7 @@ export class TestsComponent {
 							
 							this.classOfTeacherService.getById(i).subscribe(
 								data => {
-									console.log("YAARRR");
 									this.studentClasses.push(data["classOfTeacher"]);
-                                    console.log(this.studentClasses);
 								}
 							)
 
@@ -81,17 +79,42 @@ export class TestsComponent {
 
     	this.testService.getTestsForClass(classID).subscribe(
             data => {
-                console.log("RRREEDDD");
-                console.log(data);
+
+                var testIDs = [];
 
                 for (let i of data["tests"]) {
-                    this.testsOfSelectedClass.push(i);   
+
+                    if( testIDs.indexOf(i.testID) == -1 ) {
+                        testIDs.push(i.testID);
+                    }
                 }
+
+                for (let i of testIDs) {
+                            
+                    this.testService.getTestsById(i).subscribe(
+                        data => {
+                            this.testsOfSelectedClass.push(data["test"]);
+                            console.log(this.testsOfSelectedClass);
+                        }
+                    )
+
+                }
+
             }
         );
 
     }
 
+    takeTest(t: any) {
+        
+        let navigationExtras: NavigationExtras = {
+            queryParams: {
+              "testInfo": JSON.stringify(t)  
+            }
+        };
+
+        this.router.navigate(['/student/take-test'], navigationExtras);
+    }
 
 
 }

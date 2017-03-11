@@ -16,6 +16,7 @@ var browse_questions_component_1 = require("./browse-questions/browse-questions.
 var overview_component_1 = require("./overview/overview.component");
 var reports_component_1 = require("./reports/reports.component");
 var tests_component_1 = require("./tests/tests.component");
+var take_test_component_1 = require("./take-test/take-test.component");
 var forms_1 = require("@angular/forms");
 var StudentModule = (function () {
     function StudentModule() {
@@ -36,12 +37,14 @@ StudentModule = __decorate([
             overview_component_1.OverviewComponent,
             reports_component_1.ReportsComponent,
             tests_component_1.TestsComponent,
+            take_test_component_1.TakeTestComponent
         ],
         providers: [
             index_1.ClassTestsForStudentsService,
             index_1.ClassStudentService,
             index_1.ClassOfTeacherService,
-            index_1.TestService
+            index_1.TestService,
+            index_1.QuestionService
         ]
     })
 ], StudentModule);

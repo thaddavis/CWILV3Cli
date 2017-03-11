@@ -15,6 +15,7 @@ export class ShoppingCartService {
 
   add(product: any){
 
+      console.log("addToTestsCart ShoppingCartService");
       this.products = JSON.parse(localStorage.getItem('testsCart'));
       this.products.push(product);
       localStorage.setItem('testsCart', JSON.stringify(this.products));

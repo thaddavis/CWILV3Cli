@@ -50,6 +50,10 @@ export class TestsComponent implements OnInit {
 
     buildTest() {
       
+      if (this.shoppingCartService.get().length == 0) {
+        return;
+      }      
+
       this.testService.create(this.shoppingCartService.get()).subscribe(test => {
           
           this.shoppingCartService.clear();

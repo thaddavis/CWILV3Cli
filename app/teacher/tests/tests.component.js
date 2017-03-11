@@ -37,6 +37,9 @@ var TestsComponent = (function () {
     };
     TestsComponent.prototype.buildTest = function () {
         var _this = this;
+        if (this.shoppingCartService.get().length == 0) {
+            return;
+        }
         this.testService.create(this.shoppingCartService.get()).subscribe(function (test) {
             _this.shoppingCartService.clear();
             _this.loadTestsCart();

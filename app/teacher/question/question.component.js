@@ -50,6 +50,7 @@ var QuestionComponent = (function () {
         });
     };
     QuestionComponent.prototype.addToTestsCart = function () {
+        console.log("addToTestsCart");
         this.shoppingCartService.add(this.currentQuestion);
         console.log(this.shoppingCartService.get());
     };

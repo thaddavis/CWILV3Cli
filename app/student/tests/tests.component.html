@@ -27,13 +27,13 @@
         <thead>
           <tr>
             <th>ID</th>
-            
+            <th>Name</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let t of testsOfSelectedClass">
-            <td>{{t.testID}}</td>
-            
+          <tr *ngFor="let t of testsOfSelectedClass" (click)="takeTest(t)">
+            <td>{{t._id}}</td>
+            <td>{{t.name}}</td>
           </tr>
 
           <!-- <tr (click)="loadStudentDetail()">

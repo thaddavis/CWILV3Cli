@@ -8,7 +8,8 @@ import {
   ClassTestsForStudentsService,
   ClassStudentService,
   ClassOfTeacherService,
-  TestService
+  TestService,
+  QuestionService
 } from '../_services/index';
 
 import { StudentComponent } from './student.component';
@@ -16,6 +17,7 @@ import { BrowseQuestionsComponent } from './browse-questions/browse-questions.co
 import { OverviewComponent } from './overview/overview.component';
 import { ReportsComponent } from './reports/reports.component';
 import { TestsComponent } from './tests/tests.component';
+import { TakeTestComponent } from './take-test/take-test.component';
 
 import { FormsModule }    from '@angular/forms';
 
@@ -32,12 +34,14 @@ import { FormsModule }    from '@angular/forms';
     OverviewComponent,
     ReportsComponent,
     TestsComponent,
+    TakeTestComponent
   ],
   providers: [
     ClassTestsForStudentsService,
     ClassStudentService,
     ClassOfTeacherService,
-    TestService
+    TestService,
+    QuestionService
   ]
 })
 export class StudentModule {}

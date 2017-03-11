@@ -1,0 +1,10 @@
+
+:host /deep/ #canvas {
+	border-style: solid;
+}
+
+:host /deep/ #animation_container {
+	margin:auto;
+	left:0;right:0;
+	top:0;bottom:0;
+}
