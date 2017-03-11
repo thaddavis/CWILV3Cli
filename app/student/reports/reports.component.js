@@ -18,7 +18,7 @@ var ReportsComponent = (function () {
         this.authenticationService = authenticationService;
         this.router = router;
         this.users = [];
-        console.log('Browse Component');
+        console.log('Reports Component');
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
     ReportsComponent.prototype.ngOnInit = function () {

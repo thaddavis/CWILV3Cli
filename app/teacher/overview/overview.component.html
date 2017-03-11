@@ -5,54 +5,164 @@
     <h1>Dashboard</h1>
 
     <section class="row text-center placeholders">
-      <div class="col-6 col-sm-3 placeholder">
+
+      <div *ngFor="let c of classes" (click)="loadStudents(c._id)">
         <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-        <h4>Class 1</h4>
-        <div class="text-muted">Math</div>
+        <h4>{{c.name}}</h4>
+        <div class="text-muted">{{c.subject}}</div>
+      </div>
+
+
+      <!-- <div class="col-6 col-sm-3 placeholder">
+        
       </div>
       <div class="col-6 col-sm-3 placeholder">
         <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
         <h4>Class 2</h4>
         <span class="text-muted">Geometry</span>
-      </div>
+      </div> -->
       <div class="col-6 col-sm-3">
         <br>
-        <h6><a><i class="fa fa-plus" aria-hidden="true"></i> Add Class</a></h6>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myAddClassModal">
+          <i class="fa fa-plus" aria-hidden="true"></i> Add Class
+        </button>
       </div>
     </section>
 
-    <h2>Students</h2>
+    
+    
+    <div class="container">
+        <button [disabled]="this.selectedClassId === ''" type="button" class="btn btn-link pull-right" data-toggle="modal" data-target="#myAddStudentsModal">
+          <i class="fa fa-plus" aria-hidden="true"></i> Add Student
+        </button>
+    </div>
+    
     <div class="table-responsive">
+      
       <table class="table table-striped">
         <thead>
           <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Grade</th>
-
           </tr>
         </thead>
         <tbody>
-          <tr (click)="loadStudentDetail()">
+          <tr *ngFor="let s of studentsOfSelectedClass" (click)="loadStudentDetail()">
+            <td>{{s.id}}</td>
+            <td>{{s.name}}</td>
+          </tr>
+
+          <!-- <tr (click)="loadStudentDetail()">
             <td>123231</td>
             <td>Stephanie Correa</td>
             <td>97%</td>
-
           </tr>
           <tr (click)="loadStudentDetail()">
             <td>42345</td>
             <td>Tadeo Mattheus</td>
             <td>94%</td>
-
           </tr>
           <tr (click)="loadStudentDetail()">
             <td>578492</td>
             <td>Henrietta Sanchez</td>
             <td>97%</td>
-
-          </tr>
+          </tr> -->
         </tbody>
       </table>
     </div>
   </div>
 </main>
+
+<!-- Add Class Modal -->
+<div class="modal fade" id="myAddClassModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Class</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="col-md-12">
+          <form name="form" (ngSubmit)="f.form.valid && createClass()" #f="ngForm" novalidate>
+              <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !name.valid }">
+                  <label for="name">Class name</label>
+                  <input id="myInputAddClass" type="text" class="form-control" name="name" [(ngModel)]="addClassModel.name" #name="ngModel" required />
+                  <div *ngIf="f.submitted && !name.valid" class="help-block">Classname is required</div>
+              </div>
+              <div>
+                <label for="grade">Grade</label>
+                <br/>
+                <select [(ngModel)]="addClassModel.grade" class="custom-select" name="grade" #grade="ngModel">
+                  <option value="PRE-K">Pre-Kindergarten</option>
+                  <option selected value="K">Kindergarten</option>
+                  <option value="1">First</option>
+                </select>
+              </div>
+              <br/>
+
+              <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !subject.valid }">
+                  <label for="subject">Subject</label>
+                  <input type="text" class="form-control" name="subject" [(ngModel)]="addClassModel.subject" #subject="ngModel" required />
+                  <div *ngIf="f.submitted && !subject.valid" class="help-block">Subject is required</div>
+              </div>
+
+              <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button [disabled]="!f.valid" class="btn btn-primary" id="submitButtonAddClass">Add Class</button>
+              </div>     
+          </form>
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!-- Add Student Modal -->
+<div class="modal fade" id="myAddStudentsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Student</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="col-md-12">
+          <div><small id="myAddStudentsModalClassID"></small></div>
+          <br/>
+          <form name="form" (ngSubmit)="ff.form.valid && addStudentToClass()" #ff="ngForm" novalidate>
+
+              <div class="form-group" [ngClass]="{ 'has-error': ff.submitted && !studentID.valid }">
+                  <label for="studentID">Student ID</label>
+                  <input type="text" class="form-control" name="studentID" [(ngModel)]="addStudentsModel.studentID" #studentID="ngModel" required />
+                  <div *ngIf="ff.submitted && !studentID.valid" class="help-block">StudentID is required</div>
+              </div>
+              <div class="form-group" [ngClass]="{ 'has-error': ff.submitted && !classID.valid }">
+                  <label for="classID">Class ID</label>
+                  <input type="text" class="form-control" name="classID" [(ngModel)]="addStudentsModel.classID" #classID="ngModel" required />
+                  <div *ngIf="ff.submitted && !classID.valid" class="help-block">ClassID is required</div>
+              </div>
+
+              <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button [disabled]="!ff.valid" class="btn btn-primary" id="submitButtonAddStudent">Add Student</button>
+              </div>
+              
+          </form>
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div #modalCode></div>
+<div #classCode></div>

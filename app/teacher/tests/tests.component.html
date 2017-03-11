@@ -3,21 +3,25 @@
       <div class="row main-content">
         <div class="col-sm-3 offset-sm-2 col-md-3 offset-md-2">
 
-          <div class="container well">
+          <div class="container card">
             <h3>Cart</h3>
 
 
             <div id="shopping-cart">
-              <ul>
-                <li *ngFor='let s of shoppingCart; let i = index; '>
-                  {{ s.domain }}
-                  <br/>
-                  {{ s.standard | standardCleaner }}
-                  <br/>
-                  [ {{ i }} ]
-                </li>
-              </ul>
 
+              <div *ngIf="shoppingCart.length == 0">Shopping Cart Empty</div>
+              
+              <div *ngIf="shoppingCart.length > 0">
+                <ul>
+                  <li *ngFor='let s of shoppingCart; let i = index; '>
+                    {{ s.domain }}
+                    <br/>
+                    {{ s.standard | standardCleaner }}
+                    <br/>
+                    [ {{ i }} ]
+                  </li>
+                </ul>
+              </div>
             </div>
 
           </div>
@@ -25,8 +29,6 @@
         </div>
         <div class="col-sm-7 col-md-7">
 
-          <todo-list></todo-list>
-          
           <div>
               <div class="text-center">
                   <button (click)="buildTest()" type="button" class="btn btn-success">Build Test</button>
@@ -35,5 +37,128 @@
 
 
         </div>
+
+        <br/>
+        <br/>
+
+        <div class="col-sm-10 offset-sm-2 col-md-10 offset-md-2">
+          <div>
+            <h1 class="text-center">My Tests</h1>
+            <table class="table">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Created At</th> 
+                        <th>Actions</th>
+                    </tr>
+                    <tr *ngFor=' let t of tests; let i = index; '>
+                        <td>{{t._id}}</td>
+                        <td>{{t.name}}</td> 
+                        <td>{{t.created_at}}</td>
+                        <td>
+                          <!-- <button type="button" class="btn btn-success">Assign</button> -->
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" attr.data-testid={{t._id}} attr.data-name={{t.name}}>Assign</button>
+                        </td>
+                    </tr>
+                </table>
+          </div>           
+        </div>
       </div>
 </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myAssignTestName">Assign Test To Class</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form name="form" (ngSubmit)="f.form.valid && assignTest()" #f="ngForm" novalidate>
+              <div id="selectClassSelect">
+                <label for="class">Will Be Assigned To: </label>
+                <br/>
+                <select [(ngModel)]="assignTestToClassModel.class" class="custom-select" name="class" #class="ngModel" required>
+                  <option selected="true" value="" >Select a class</option>
+                  <option *ngFor=' let c of classes; let i = index; ' value="{{ c._id }}" >{{ c.name }}</option>
+                </select>
+              </div>
+              <br/>
+
+              <div>
+                <label for="time">At The Following Time: </label>
+                <input class="form-control" type="datetime-local" name="time" #time="ngModel" [(ngModel)]="assignTestToClassModel.time" required/>
+              </div>
+
+
+              <br/>
+              
+              <input #hiddentestID id="hiddentestID" class="form-control" type="hidden" name="testid"/>
+              
+              <!-- <div>
+                <label for="time">At The Following Time: </label>
+                <input class="form-control" type="datetime-local" name="time" #time="ngModel" [(ngModel)]="assignTestToClassModel.time" required/> 
+                <label for="testid"><small>ID of Test: </small></label>
+                <input class="form-control" [(ngModel)]="assignTestToClassModel.testid" #testid="ngModel" type="text" name="testid" id="hiddentestID"/>
+              </div> -->
+              
+
+              <!-- <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !name.valid }">
+                  <label for="name">Class name</label>
+                  <input id="myInputAddClass" type="text" class="form-control" name="name" [(ngModel)]="assignTestToClassModel.name" #name="ngModel" required />
+                  <div *ngIf="f.submitted && !name.valid" class="help-block">Classname is required</div>
+              </div>
+              <div>
+                <label for="grade">Grade</label>
+                <br/>
+                <select [(ngModel)]="assignTestToClassModel.grade" class="custom-select" name="grade"  #grade="ngModel">
+                  <option value="PRE-K">Pre-Kindergarten</option>
+                  <option selected value="K">Kindergarten</option>
+                  <option value="1">First</option>
+                </select>
+              </div>
+              <br/>
+
+              <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !subject.valid }">
+                  <label for="subject">Subject</label>
+                  <input type="text" class="form-control" name="subject" [(ngModel)]="assignTestToClassModel.subject" #subject="ngModel" required />
+                  <div *ngIf="f.submitted && !subject.valid" class="help-block">Subject is required</div>
+              </div> -->
+
+              <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button [disabled]="!f.valid" class="btn btn-primary" id="submitButtonAssignTest">Add Class</button>
+              </div>     
+        </form>
+        <!-- <form name="form" (ngSubmit)="f.form.valid && assignTest()" #f="ngForm" novalidate>
+          <div>
+            <label for="class">Will Be Assigned To: </label>
+            <br/>
+            <select [(ngModel)]="assignTestToClassModel.class" class="custom-select" name="class" #class="ngModel">
+              <option *ngFor=' let c of classes; let i = index; ' value="{{c._id}}" [selected]="i == 1" >{{ c.name }}</option>
+            </select>
+          </div>
+          <br/>
+
+          <div>
+            <label for="time">At The Following Time: </label>
+            <input class="form-control" type="datetime-local" name="time" #time="ngModel" [(ngModel)]="assignTestToClassModel.time" />
+          </div>
+
+          <input [(ngModel)]="assignTestToClassModel.testID" #testID="ngModel" type="hidden" name="testID" id="hiddentestID"/>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Assign</button>
+          </div>
+        </form> -->
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div #modalCode></div>

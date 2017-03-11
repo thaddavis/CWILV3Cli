@@ -19,9 +19,9 @@ var UserService = (function () {
     //getAll() {
     //    return this.http.get('/api/users', this.jwt()).map((response: Response) => response.json());
     //}
-    //getById(id: number) {
-    //    return this.http.get('/api/users/' + id, this.jwt()).map((response: Response) => response.json());
-    //}
+    UserService.prototype.getById = function (id) {
+        return this.http.post(this.authServerUrl + '/users/' + id, {}, this.jwt()).map(function (response) { return response.json(); });
+    };
     UserService.prototype.create = function (user) {
         return this.http.post(this.authServerUrl + '/signup', user, this.jwt()).map(function (response) { return response.json(); });
     };

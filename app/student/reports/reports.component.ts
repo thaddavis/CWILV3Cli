@@ -15,7 +15,7 @@ export class ReportsComponent implements OnInit {
     users: User[] = [];
 
     constructor(private userService: UserService, private authenticationService: AuthenticationService, private router: Router) {
-        console.log('Browse Component');
+        console.log('Reports Component');
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 

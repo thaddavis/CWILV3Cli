@@ -1,14 +1,58 @@
 <main class="col-sm-4 offset-sm-4 col-md-9 offset-md-3 pt-3">
-  <div class="container">
+  <!-- <div class="container">
     <h1>Tests</h1>
-  </div>
 
-  <svg width="500" height="500" viewBox="0 0 500 500" >
-    <svg:g class="group">
-      <svg:polygon class="shield" points="125,30 125,30 125,30 31.9,63.2 46.1,186.3 125,230 125,230 125,230 203.9,186.3 218.1,63.2" />
-      <svg:path class="a" d="M125,52.1L66.8,182.6h0h21.7h0l11.7-29.2h49.4l11.7,29.2h0h21.7h0L125,52.1L125,52.1L125,52.1L125,52.1
-        L125,52.1z M142,135.4H108l17-40.9L142,135.4z"/>
-    </svg:g>
-  </svg>
+    
+  </div> -->
 
+  <h1>Tests</h1>
+  <hr/>
+
+  <div class="container">
+    
+
+    <section class="row text-center placeholders">
+
+      <div *ngFor="let c of studentClasses" (click)="loadTests(c[0]._id)">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+        <h4>{{c[0].name}}</h4>
+        <div class="text-muted">{{c[0].subject}}</div>
+      </div>
+
+    </section>
+
+    <div class="table-responsive">
+      
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let t of testsOfSelectedClass">
+            <td>{{t.testID}}</td>
+            
+          </tr>
+
+          <!-- <tr (click)="loadStudentDetail()">
+            <td>123231</td>
+            <td>Stephanie Correa</td>
+            
+          </tr>
+          <tr (click)="loadStudentDetail()">
+            <td>42345</td>
+            <td>Tadeo Mattheus</td>
+            
+          </tr>
+          <tr (click)="loadStudentDetail()">
+            <td>578492</td>
+            <td>Henrietta Sanchez</td> 
+          </tr>-->
+        </tbody>
+      </table>
+    </div>
+
+   </div>
 </main>

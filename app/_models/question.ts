@@ -1,9 +1,10 @@
 export class Question {
     id: number;
     states: any;
-		grades: any;
-		subjects: any;
-		domain: any;
-		standard: any;
-		genre: any;
+	grades: any;
+	subjects: any;
+	domain: any;
+	standard: any;
+	genre: any;
+	questionFile: any;
 }

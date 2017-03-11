@@ -4,6 +4,13 @@ import { ChartModule } from '../charts/chart.module';
 
 import { StudentRoutingModule }       from './student-routing.module';
 
+import { 
+  ClassTestsForStudentsService,
+  ClassStudentService,
+  ClassOfTeacherService,
+  TestService
+} from '../_services/index';
+
 import { StudentComponent } from './student.component';
 import { BrowseQuestionsComponent } from './browse-questions/browse-questions.component';
 import { OverviewComponent } from './overview/overview.component';
@@ -24,7 +31,13 @@ import { FormsModule }    from '@angular/forms';
     BrowseQuestionsComponent,
     OverviewComponent,
     ReportsComponent,
-    TestsComponent
+    TestsComponent,
+  ],
+  providers: [
+    ClassTestsForStudentsService,
+    ClassStudentService,
+    ClassOfTeacherService,
+    TestService
   ]
 })
 export class StudentModule {}

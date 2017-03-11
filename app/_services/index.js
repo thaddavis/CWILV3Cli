@@ -9,4 +9,9 @@ __export(require("./user.service"));
 __export(require("./question.service"));
 __export(require("./gradeStandard.service"));
 __export(require("./shoppingCart.service"));
+__export(require("./test.service"));
+__export(require("./class.service"));
+__export(require("./classStudent.service"));
+__export(require("./classTest.service"));
+__export(require("./classTestForStudents.service"));
 //# sourceMappingURL=index.js.map

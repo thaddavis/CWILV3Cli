@@ -13,13 +13,16 @@ var core_1 = require("@angular/core");
 var index_1 = require("../../_services/index");
 var router_1 = require("@angular/router");
 var router_2 = require("@angular/router");
+var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
 var QuestionComponent = (function () {
-    function QuestionComponent(router, route, questionService, shoppingCartService) {
+    function QuestionComponent(router, route, questionService, shoppingCartService, http) {
         this.router = router;
         this.route = route;
         this.questionService = questionService;
         this.shoppingCartService = shoppingCartService;
+        this.http = http;
+        this.questionServerUrl = 'http://localhost:3090/';
         console.log('Question Component');
     }
     QuestionComponent.prototype.ngOnInit = function () {
@@ -29,11 +32,21 @@ var QuestionComponent = (function () {
             _this.loadQuestion(_this.currentQuestionId);
         });
     };
+    QuestionComponent.prototype.ngAfterViewInit = function () {
+    };
     QuestionComponent.prototype.loadQuestion = function (currentQuestionId) {
         var _this = this;
         this.questionService.getById(currentQuestionId).subscribe(function (question) {
             _this.currentQuestion = question['question'];
             console.log(_this.currentQuestion);
+            console.log(_this.questionServerUrl + _this.currentQuestion.questionFile);
+            _this.http.get(_this.questionServerUrl + _this.currentQuestion.questionFile).map(function (response) {
+                return response;
+            }).subscribe(function (data) {
+                _this.currentTest = data;
+                var fragment = document.createRange().createContextualFragment(_this.currentTest._body);
+                _this.elementRef.nativeElement.appendChild(fragment);
+            }, function (err) { return console.log(err); }, function () { return console.log("Completed"); });
         });
     };
     QuestionComponent.prototype.addToTestsCart = function () {
@@ -42,6 +55,10 @@ var QuestionComponent = (function () {
     };
     return QuestionComponent;
 }());
+__decorate([
+    core_1.ViewChild('gameLogic'),
+    __metadata("design:type", core_1.ElementRef)
+], QuestionComponent.prototype, "elementRef", void 0);
 QuestionComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
@@ -51,7 +68,8 @@ QuestionComponent = __decorate([
     __metadata("design:paramtypes", [router_1.Router,
         router_2.ActivatedRoute,
         index_1.QuestionService,
-        index_1.ShoppingCartService])
+        index_1.ShoppingCartService,
+        http_1.Http])
 ], QuestionComponent);
 exports.QuestionComponent = QuestionComponent;
 //# sourceMappingURL=question.component.js.map

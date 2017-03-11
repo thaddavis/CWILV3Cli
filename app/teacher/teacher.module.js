@@ -54,7 +54,11 @@ TeacherModule = __decorate([
         providers: [
             todo_list_service_1.TodoService,
             index_1.QuestionService,
-            index_1.GradeStandardService
+            index_1.GradeStandardService,
+            index_1.TestService,
+            index_1.ClassOfTeacherService,
+            index_1.ClassStudentService,
+            index_1.ClassTestService
         ]
     })
 ], TeacherModule);

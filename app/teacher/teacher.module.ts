@@ -3,9 +3,16 @@ import { CommonModule }   from '@angular/common';
 import { FormsModule }    from '@angular/forms';
 import { ChartModule } from '../charts/chart.module';
 
-import { TeacherRoutingModule }       from './teacher-routing.module';
+import { TeacherRoutingModule } from './teacher-routing.module';
 
-import { QuestionService, GradeStandardService } from '../_services/index';
+import { 
+  QuestionService,
+  GradeStandardService, 
+  TestService, 
+  ClassOfTeacherService,
+  ClassStudentService,
+  ClassTestService
+} from '../_services/index';
 
 import { TodoService } from './todo-list/todo-list.service';
 
@@ -47,7 +54,11 @@ import { MakeDraggable, MakeDroppable } from './shared/index';
   providers: [
     TodoService,
     QuestionService,
-    GradeStandardService
+    GradeStandardService,
+    TestService,
+    ClassOfTeacherService,
+    ClassStudentService,
+    ClassTestService
   ]
 })
 export class TeacherModule {}
