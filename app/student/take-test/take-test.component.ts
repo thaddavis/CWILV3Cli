@@ -22,9 +22,16 @@ import 'rxjs/add/operator/map';
     styleUrls: ['./take-test.css']
 })
 
+//finishedTest() {
+//    console.log('finishedTest');
+//}
+
+
 export class TakeTestComponent implements OnInit, OnDestroy {
 
     testInfo: any = {};
+    currentQuestion: any;
+    currentTest: any;
     @ViewChild('currentQuestionCode') elementRef:ElementRef;
     questionServerUrl = 'http://localhost:3090/';
 
@@ -104,4 +111,8 @@ export class TakeTestComponent implements OnInit, OnDestroy {
             });
         }
     }
+
+    finishedTest() {
+
+    }    
 }

@@ -71,6 +71,8 @@ var TakeTestComponent = (function () {
             });
         }
     };
+    TakeTestComponent.prototype.finishedTest = function () {
+    };
     return TakeTestComponent;
 }());
 __decorate([
@@ -82,7 +84,11 @@ TakeTestComponent = __decorate([
         moduleId: module.id,
         templateUrl: 'take-test.component.html',
         styleUrls: ['./take-test.css']
-    }),
+    })
+    //finishedTest() {
+    //    console.log('finishedTest');
+    //}
+    ,
     __metadata("design:paramtypes", [index_1.UserService,
         index_1.AuthenticationService,
         router_1.Router,
