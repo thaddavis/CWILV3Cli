@@ -23,15 +23,16 @@ var TestsComponent = (function () {
         this.testService = testService;
         this.studentClasses = [];
         this.testsOfSelectedClass = [];
+        this.studentID = '';
+        this.classID = '';
         console.log('Tests Component');
         this.loadMyClasses();
     }
     TestsComponent.prototype.loadMyClasses = function () {
         var _this = this;
-        var studentID = '';
         this.authenticationService.authenticated(JSON.parse(localStorage.getItem('currentUser'))).subscribe(function (data) {
-            studentID = data.userID;
-            _this.classStudentService.getStudentClasses(studentID).subscribe(function (data) {
+            _this.studentID = data.userID;
+            _this.classStudentService.getStudentClasses(_this.studentID).subscribe(function (data) {
                 var classIDs = [];
                 for (var _i = 0, _a = data["studentClasses"]; _i < _a.length; _i++) {
                     var i = _a[_i];
@@ -51,6 +52,7 @@ var TestsComponent = (function () {
     TestsComponent.prototype.loadTests = function (classID) {
         var _this = this;
         this.testsOfSelectedClass = [];
+        this.classID = classID;
         this.testService.getTestsForClass(classID).subscribe(function (data) {
             var testIDs = [];
             for (var _i = 0, _a = data["tests"]; _i < _a.length; _i++) {
@@ -71,7 +73,9 @@ var TestsComponent = (function () {
     TestsComponent.prototype.takeTest = function (t) {
         var navigationExtras = {
             queryParams: {
-                "testInfo": JSON.stringify(t)
+                "testInfo": JSON.stringify(t),
+                "studentID": this.studentID,
+                "classID": this.classID
             }
         };
         this.router.navigate(['/student/take-test'], navigationExtras);

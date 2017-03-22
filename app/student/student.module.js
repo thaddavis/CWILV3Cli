@@ -11,6 +11,7 @@ var common_1 = require("@angular/common");
 var chart_module_1 = require("../charts/chart.module");
 var student_routing_module_1 = require("./student-routing.module");
 var index_1 = require("../_services/index");
+var index_2 = require("../_pipes/index");
 var student_component_1 = require("./student.component");
 var browse_questions_component_1 = require("./browse-questions/browse-questions.component");
 var overview_component_1 = require("./overview/overview.component");
@@ -37,14 +38,17 @@ StudentModule = __decorate([
             overview_component_1.OverviewComponent,
             reports_component_1.ReportsComponent,
             tests_component_1.TestsComponent,
-            take_test_component_1.TakeTestComponent
+            take_test_component_1.TakeTestComponent,
+            index_2.SanitizeHtmlPipe,
+            index_2.TestResponsePercentagePipe
         ],
         providers: [
             index_1.ClassTestsForStudentsService,
             index_1.ClassStudentService,
             index_1.ClassOfTeacherService,
             index_1.TestService,
-            index_1.QuestionService
+            index_1.QuestionService,
+            index_1.TestResponseService
         ]
     })
 ], StudentModule);

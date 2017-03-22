@@ -1,11 +1,11 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
 import { User, Test, ClassOfTeacher } from '../../_models/index';
-import { 
-  UserService, 
-  AuthenticationService, 
-  ShoppingCartService, 
-  TestService, 
+import {
+  UserService,
+  AuthenticationService,
+  ShoppingCartService,
+  TestService,
   ClassOfTeacherService,
   ClassTestService
 } from '../../_services/index';
@@ -23,9 +23,11 @@ export class TestsComponent implements OnInit {
     tests: Test[] = [];
     classes: ClassOfTeacher[] = [];
     assignTestToClassModel: any = { };
+
+    buildTestModel: any = { };
     @ViewChild('modalCode') elementRef:ElementRef;
     @ViewChild('hiddentestID') testidRef:ElementRef;
-    
+
 
     constructor(
       private userService: UserService,
@@ -49,16 +51,18 @@ export class TestsComponent implements OnInit {
     }
 
     buildTest() {
-      
+
+      console.log('buildTest');
+
       if (this.shoppingCartService.get().length == 0) {
         return;
-      }      
+      }
 
-      this.testService.create(this.shoppingCartService.get()).subscribe(test => {
-          
+      this.testService.create(this.shoppingCartService.get(), this.buildTestModel.name).subscribe(test => {
+
           this.shoppingCartService.clear();
           this.loadTestsCart();
-          this.loadAllTests();          
+          this.loadAllTests();
 
       });
     }
@@ -82,8 +86,8 @@ export class TestsComponent implements OnInit {
     }
 
     private assignTest() {
-      
-      this.assignTestToClassModel.testid = this.testidRef.nativeElement.value; 
+
+      this.assignTestToClassModel.testid = this.testidRef.nativeElement.value;
       this.classTestService.create(this.assignTestToClassModel).subscribe(classTest => {
         console.log(classTest);
       });
@@ -92,9 +96,9 @@ export class TestsComponent implements OnInit {
 
     script = `<script>$('#exampleModal').on('show.bs.modal', function (event) {
 
-      var button = $(event.relatedTarget); 
+      var button = $(event.relatedTarget);
       var testid = button.data('testid');
-      var testname = button.data('name'); 
+      var testname = button.data('name');
 
       var modal = $(this);
       modal.find('#myAssignTestName').text("Assign " + testname);
@@ -104,6 +108,10 @@ export class TestsComponent implements OnInit {
 
       $('#submitButtonAssignTest').click(function(e) {
             $('#exampleModal').modal('toggle');
+      });
+
+      $('#submitButtonBuildTest').click(function(e) {
+            $('#exampleModalBuildTest').modal('toggle');
       });
 
     </script>`

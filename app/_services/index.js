@@ -14,4 +14,5 @@ __export(require("./class.service"));
 __export(require("./classStudent.service"));
 __export(require("./classTest.service"));
 __export(require("./classTestForStudents.service"));
+__export(require("./testResponse.service"));
 //# sourceMappingURL=index.js.map

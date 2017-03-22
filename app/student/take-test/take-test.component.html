@@ -1,22 +1,35 @@
 <main class="col-sm-4 offset-sm-4 col-md-9 offset-md-3 pt-3">
-  <!-- <div class="container">
-    <h1>Tests</h1>
-
-    
-  </div> -->
 
   <h1><small> Test in Progress: </small> {{ this.testInfo.name }}</h1>
   <hr/>
 
   <div class="container">
-    
 
     <section class="row text-center placeholders">
 
       <div class="justCuz" #currentQuestionCode ></div>
-        
+      <!-- <div [innerHTML]="currentQuestionHTML | sanitizeHtml"></div> -->
+
     </section>
 
+    <br/>
+    <div class="container card card-inverse">
+      <br/>
+      <div *ngIf="questionCounter > 0">
+        <button class="btn btn-success"(click)="previousQuestion()">Previous Question</button>
+      </div>
+      <div *ngIf="questionCounter < this.currentTestQuestionCount - 1">
+        <button class="btn btn-success" (click)="nextQuestion()">Next Question</button>
+        <button class="btn btn-success">Skip Question</button>
+      </div>
+      <div *ngIf="questionCounter == this.currentTestQuestionCount - 1">
+        <button class="btn btn-danger float-md-right float-sm-right" (click)="finishedTest()">Complete Test</button>
+      </div>
+      <br/>
+    </div>
+
+    <br/>
+    <br/>
 
    </div>
 </main>

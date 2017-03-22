@@ -32,12 +32,12 @@ var TestService = (function () {
             return response.json();
         });
     };
-    TestService.prototype.create = function (t) {
+    TestService.prototype.create = function (t, name) {
         var questions = [];
         t.forEach(function (item, index) {
             questions.push(item._id);
         });
-        var tObj = { name: 'Augustin Test', questions: questions };
+        var tObj = { name: name, questions: questions };
         return this.http.post(this.testServerUrl + '/tests', tObj, this.jwt()).map(function (response) { return response.json(); });
     };
     TestService.prototype.jwt = function () {

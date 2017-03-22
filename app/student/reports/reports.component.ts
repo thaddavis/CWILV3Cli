@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
 import { User } from '../../_models/index';
-import { UserService, AuthenticationService } from '../../_services/index';
+import {
+  UserService,
+  AuthenticationService,
+  ClassStudentService,
+  ClassOfTeacherService,
+  TestService,
+  TestResponseService
+} from '../../_services/index';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,14 +20,26 @@ import { Router } from '@angular/router';
 export class ReportsComponent implements OnInit {
     currentUser: User;
     users: User[] = [];
+    currentUserID = '';
 
-    constructor(private userService: UserService, private authenticationService: AuthenticationService, private router: Router) {
+    studentClasses:any[] = [];
+    testsOfSelectedClass:any[] =  [];
+    testsResponsesOfSelectedClass:any[] = [];
+
+    constructor(
+      private userService: UserService,
+      private authenticationService: AuthenticationService,
+      private router: Router,
+      private classStudentService: ClassStudentService,
+      private classOfTeacherService: ClassOfTeacherService,
+      private testService: TestService,
+      private testResponseService: TestResponseService) {
         console.log('Reports Component');
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
     ngOnInit() {
-        //this.loadAllUsers();
+        this.loadMyClasses();
     }
 
     logout() {
@@ -34,7 +53,67 @@ export class ReportsComponent implements OnInit {
         //this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
     }
 
-    private loadAllUsers() {
-        //this.userService.getAll().subscribe(users => { this.users = users; });
+    loadMyClasses() {
+
+    	this.authenticationService.authenticated(JSON.parse(localStorage.getItem('currentUser'))).subscribe(
+            data => {
+
+            	this.currentUserID = data.userID;
+            	this.classStudentService.getStudentClasses(this.currentUserID).subscribe(
+		            data => {
+
+		             	var classIDs = []
+		            	for (let i of data["studentClasses"]) {
+
+		            		if (classIDs.indexOf(i.classID) == -1) {
+    							     classIDs.push(i.classID);
+							      }
+
+						      }
+
+		          		for (let i of classIDs) {
+      							this.classOfTeacherService.getById(i).subscribe(
+      								data => {
+      									this.studentClasses.push(data["classOfTeacher"]);
+      								}
+      							)
+						      }
+		        });
+        });
+    }
+
+    loadGrades(classID: any) {
+
+        this.testsResponsesOfSelectedClass = [];
+
+    	  this.testResponseService.getTestResponsesForStudentInClass(this.currentUserID, classID).subscribe(
+            data => {
+
+              console.log("*********");
+              console.log(data);
+
+                this.testsResponsesOfSelectedClass = data["studentResponses"];
+
+                // var testIDs = [];
+                //
+                // for (let i of data["tests"]) {
+                //
+                //     if( testIDs.indexOf(i.testID) == -1 ) {
+                //         testIDs.push(i.testID);
+                //     }
+                // }
+                //
+                // for (let i of testIDs) {
+                //
+                //     this.testService.getTestsById(i).subscribe(
+                //         data => {
+                //             this.testsOfSelectedClass.push(data["test"]);
+                //             console.log(this.testsOfSelectedClass);
+                //         }
+                //     )
+                //
+                // }
+            }
+        );
     }
 }

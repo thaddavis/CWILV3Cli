@@ -12,14 +12,14 @@ export class TestService {
     getTests() {
         return this.http.get(this.testServerUrl + '/tests', this.jwt()).map((response: Response) =>
           response.json()
-        );   
+        );
     }
 
     getTestsById(testID: string) {
 
         return this.http.get(this.testServerUrl + '/tests/' + testID, this.jwt()).map((response: Response) =>
           response.json()
-        );   
+        );
     }
 
     getTestsForClass(classID: any) {
@@ -28,21 +28,19 @@ export class TestService {
 
         return this.http.get(this.testServerUrl + '/testsForClass/' + classID, this.jwt()).map((response: Response) =>
           response.json()
-        );   
-    
+        );
+
     }
 
+    create(t: any, name: any) {
 
-
-    create(t: any) {
-        
         var questions:any[] = [];
 
         t.forEach((item:any, index:any) => {
             questions.push(item._id);
         });
 
-        var tObj = { name: 'Augustin Test', questions };
+        var tObj = { name: name, questions };
 
         return this.http.post(this.testServerUrl + '/tests', tObj, this.jwt()).map((response: Response) => response.json());
     }

@@ -1,10 +1,10 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 
 import { User } from '../../_models/index';
-import { 
-	UserService, 
-	AuthenticationService, 
-	ClassTestsForStudentsService, 
+import {
+	UserService,
+	AuthenticationService,
+	ClassTestsForStudentsService,
 	ClassStudentService,
 	ClassOfTeacherService,
     TestService
@@ -19,18 +19,20 @@ import { Router, NavigationExtras } from '@angular/router';
 
 export class TestsComponent {
 
-	studentClasses:any[] = [];
-    testsOfSelectedClass:any[] = [];
+		studentClasses:any[] = [];
+    testsOfSelectedClass:any[] =  [];
+		studentID = '';
+		classID = '';
 
     constructor(
-    	private userService: UserService, 
-    	private authenticationService: AuthenticationService, 
+    	private userService: UserService,
+    	private authenticationService: AuthenticationService,
     	private router: Router,
     	private classTestsForStudentsService: ClassTestsForStudentsService,
     	private classStudentService: ClassStudentService,
     	private classOfTeacherService: ClassOfTeacherService,
         private testService: TestService) {
-    	
+
     	console.log('Tests Component');
 
     	this.loadMyClasses();
@@ -39,26 +41,26 @@ export class TestsComponent {
 
     loadMyClasses() {
 
-    	var studentID = '';
+
 
     	this.authenticationService.authenticated(JSON.parse(localStorage.getItem('currentUser'))).subscribe(
-            data => {   
+            data => {
 
-            	studentID = data.userID;
-            	this.classStudentService.getStudentClasses(studentID).subscribe(
+            	this.studentID = data.userID;
+            	this.classStudentService.getStudentClasses(this.studentID).subscribe(
 		            data => {
-		             
+
 		             	var classIDs = []
 		            	for (let i of data["studentClasses"]) {
-							
+
 		            		if (classIDs.indexOf(i.classID) == -1) {
     							classIDs.push(i.classID);
-							}		
-						
+							}
+
 						}
 
 		          		for (let i of classIDs) {
-							
+
 							this.classOfTeacherService.getById(i).subscribe(
 								data => {
 									this.studentClasses.push(data["classOfTeacher"]);
@@ -77,7 +79,8 @@ export class TestsComponent {
 
         this.testsOfSelectedClass = [];
 
-    	this.testService.getTestsForClass(classID).subscribe(
+				this.classID = classID;
+    		this.testService.getTestsForClass(classID).subscribe(
             data => {
 
                 var testIDs = [];
@@ -90,7 +93,7 @@ export class TestsComponent {
                 }
 
                 for (let i of testIDs) {
-                            
+
                     this.testService.getTestsById(i).subscribe(
                         data => {
                             this.testsOfSelectedClass.push(data["test"]);
@@ -106,10 +109,12 @@ export class TestsComponent {
     }
 
     takeTest(t: any) {
-        
+
         let navigationExtras: NavigationExtras = {
             queryParams: {
-              "testInfo": JSON.stringify(t)  
+              "testInfo": JSON.stringify(t),
+							"studentID": this.studentID,
+							"classID": this.classID
             }
         };
 

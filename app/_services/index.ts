@@ -9,3 +9,4 @@ export * from './class.service';
 export * from './classStudent.service';
 export * from './classTest.service';
 export * from './classTestForStudents.service';
+export * from './testResponse.service';

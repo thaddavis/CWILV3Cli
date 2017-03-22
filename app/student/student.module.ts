@@ -4,13 +4,16 @@ import { ChartModule } from '../charts/chart.module';
 
 import { StudentRoutingModule }       from './student-routing.module';
 
-import { 
+import {
   ClassTestsForStudentsService,
   ClassStudentService,
   ClassOfTeacherService,
   TestService,
-  QuestionService
+  QuestionService,
+  TestResponseService
 } from '../_services/index';
+
+import { SanitizeHtmlPipe, TestResponsePercentagePipe } from '../_pipes/index';
 
 import { StudentComponent } from './student.component';
 import { BrowseQuestionsComponent } from './browse-questions/browse-questions.component';
@@ -34,14 +37,17 @@ import { FormsModule }    from '@angular/forms';
     OverviewComponent,
     ReportsComponent,
     TestsComponent,
-    TakeTestComponent
+    TakeTestComponent,
+    SanitizeHtmlPipe,
+    TestResponsePercentagePipe
   ],
   providers: [
     ClassTestsForStudentsService,
     ClassStudentService,
     ClassOfTeacherService,
     TestService,
-    QuestionService
+    QuestionService,
+    TestResponseService
   ]
 })
 export class StudentModule {}

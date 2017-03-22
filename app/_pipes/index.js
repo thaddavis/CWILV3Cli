@@ -4,4 +4,6 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./standardCleaner"));
+__export(require("./byPassDOMSanitize"));
+__export(require("./testResponsePercentagePipe"));
 //# sourceMappingURL=index.js.map

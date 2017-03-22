@@ -25,7 +25,8 @@ var TestsComponent = (function () {
         this.tests = [];
         this.classes = [];
         this.assignTestToClassModel = {};
-        this.script = "<script>$('#exampleModal').on('show.bs.modal', function (event) {\n\n      var button = $(event.relatedTarget); \n      var testid = button.data('testid');\n      var testname = button.data('name'); \n\n      var modal = $(this);\n      modal.find('#myAssignTestName').text(\"Assign \" + testname);\n      modal.find('#hiddentestID').val(testid);\n\n    });\n\n      $('#submitButtonAssignTest').click(function(e) {\n            $('#exampleModal').modal('toggle');\n      });\n\n    </script>";
+        this.buildTestModel = {};
+        this.script = "<script>$('#exampleModal').on('show.bs.modal', function (event) {\n\n      var button = $(event.relatedTarget);\n      var testid = button.data('testid');\n      var testname = button.data('name');\n\n      var modal = $(this);\n      modal.find('#myAssignTestName').text(\"Assign \" + testname);\n      modal.find('#hiddentestID').val(testid);\n\n    });\n\n      $('#submitButtonAssignTest').click(function(e) {\n            $('#exampleModal').modal('toggle');\n      });\n\n      $('#submitButtonBuildTest').click(function(e) {\n            $('#exampleModalBuildTest').modal('toggle');\n      });\n\n    </script>";
         console.log('Test Component');
     }
     TestsComponent.prototype.ngOnInit = function () {
@@ -37,10 +38,11 @@ var TestsComponent = (function () {
     };
     TestsComponent.prototype.buildTest = function () {
         var _this = this;
+        console.log('buildTest');
         if (this.shoppingCartService.get().length == 0) {
             return;
         }
-        this.testService.create(this.shoppingCartService.get()).subscribe(function (test) {
+        this.testService.create(this.shoppingCartService.get(), this.buildTestModel.name).subscribe(function (test) {
             _this.shoppingCartService.clear();
             _this.loadTestsCart();
             _this.loadAllTests();
