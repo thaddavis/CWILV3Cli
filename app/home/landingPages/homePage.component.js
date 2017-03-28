@@ -17,7 +17,8 @@ var HomePageComponent = (function () {
 HomePageComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
-        templateUrl: 'homePage.component.html'
+        templateUrl: 'homePage.component.html',
+        styleUrls: ['./homePage.css']
     })
 ], HomePageComponent);
 exports.HomePageComponent = HomePageComponent;

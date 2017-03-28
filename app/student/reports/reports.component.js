@@ -26,6 +26,7 @@ var ReportsComponent = (function () {
         this.studentClasses = [];
         this.testsOfSelectedClass = [];
         this.testsResponsesOfSelectedClass = [];
+        this.testsOfTestResponses = [];
         console.log('Reports Component');
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
@@ -64,28 +65,15 @@ var ReportsComponent = (function () {
         var _this = this;
         this.testsResponsesOfSelectedClass = [];
         this.testResponseService.getTestResponsesForStudentInClass(this.currentUserID, classID).subscribe(function (data) {
-            console.log("*********");
-            console.log(data);
             _this.testsResponsesOfSelectedClass = data["studentResponses"];
-            // var testIDs = [];
-            //
-            // for (let i of data["tests"]) {
-            //
-            //     if( testIDs.indexOf(i.testID) == -1 ) {
-            //         testIDs.push(i.testID);
-            //     }
-            // }
-            //
-            // for (let i of testIDs) {
-            //
-            //     this.testService.getTestsById(i).subscribe(
-            //         data => {
-            //             this.testsOfSelectedClass.push(data["test"]);
-            //             console.log(this.testsOfSelectedClass);
-            //         }
-            //     )
-            //
-            // }
+            var count = 0;
+            for (var _i = 0, _a = _this.testsResponsesOfSelectedClass; _i < _a.length; _i++) {
+                var i = _a[_i];
+                _this.testService.getTestsById(i['testID']).subscribe(function (data) {
+                    _this.testsResponsesOfSelectedClass[count].testName = data['test']['name'];
+                    count++;
+                });
+            }
         });
     };
     return ReportsComponent;

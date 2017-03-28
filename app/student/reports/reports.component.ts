@@ -25,6 +25,7 @@ export class ReportsComponent implements OnInit {
     studentClasses:any[] = [];
     testsOfSelectedClass:any[] =  [];
     testsResponsesOfSelectedClass:any[] = [];
+    testsOfTestResponses:any[] = [];
 
     constructor(
       private userService: UserService,
@@ -83,36 +84,19 @@ export class ReportsComponent implements OnInit {
     }
 
     loadGrades(classID: any) {
-
         this.testsResponsesOfSelectedClass = [];
-
     	  this.testResponseService.getTestResponsesForStudentInClass(this.currentUserID, classID).subscribe(
             data => {
-
-              console.log("*********");
-              console.log(data);
-
-                this.testsResponsesOfSelectedClass = data["studentResponses"];
-
-                // var testIDs = [];
-                //
-                // for (let i of data["tests"]) {
-                //
-                //     if( testIDs.indexOf(i.testID) == -1 ) {
-                //         testIDs.push(i.testID);
-                //     }
-                // }
-                //
-                // for (let i of testIDs) {
-                //
-                //     this.testService.getTestsById(i).subscribe(
-                //         data => {
-                //             this.testsOfSelectedClass.push(data["test"]);
-                //             console.log(this.testsOfSelectedClass);
-                //         }
-                //     )
-                //
-                // }
+              this.testsResponsesOfSelectedClass = data["studentResponses"];
+              var count = 0;
+              for (let i of this.testsResponsesOfSelectedClass) {
+                this.testService.getTestsById(i['testID']).subscribe(
+                    data => {
+                        this.testsResponsesOfSelectedClass[count].testName = data['test']['name'];
+                        count++;
+                    }
+                )
+              }
             }
         );
     }

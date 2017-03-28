@@ -15,13 +15,13 @@
     <br/>
     <div class="container card card-inverse">
       <br/>
-      <div *ngIf="questionCounter > 0">
-        <button class="btn btn-success"(click)="previousQuestion()">Previous Question</button>
-      </div>
-      <div *ngIf="questionCounter < this.currentTestQuestionCount - 1">
-        <button class="btn btn-success" (click)="nextQuestion()">Next Question</button>
+
+      <div>
+        <button *ngIf="questionCounter > 0" class="btn btn-success" (click)="previousQuestion()">Previous Question</button>
+        <button *ngIf="questionCounter < this.currentTestQuestionCount - 1" class="btn btn-success" (click)="nextQuestion()">Next Question</button>
         <button class="btn btn-success">Skip Question</button>
       </div>
+
       <div *ngIf="questionCounter == this.currentTestQuestionCount - 1">
         <button class="btn btn-danger float-md-right float-sm-right" (click)="finishedTest()">Complete Test</button>
       </div>

@@ -26,6 +26,7 @@
       <table class="table table-striped">
         <thead>
           <tr>
+            <th>Test Name</th>
             <th>TestID</th>
             <th>Date</th>
             <th>Score</th>
@@ -33,6 +34,7 @@
         </thead>
         <tbody>
            <tr *ngFor="let g of testsResponsesOfSelectedClass">
+            <td> {{g.testName}} </td>
             <td>{{g.testID}}</td>
             <td>{{g.created_at}}</td>
             <td>{{ g.result | testResponsePercentagePipe }}</td>
