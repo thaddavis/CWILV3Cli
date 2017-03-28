@@ -18,6 +18,7 @@ var overview_component_1 = require("./overview/overview.component");
 var reports_component_1 = require("./reports/reports.component");
 var tests_component_1 = require("./tests/tests.component");
 var take_test_component_1 = require("./take-test/take-test.component");
+var grade_detail_component_1 = require("./grade-detail/grade-detail.component");
 var forms_1 = require("@angular/forms");
 var StudentModule = (function () {
     function StudentModule() {
@@ -39,6 +40,7 @@ StudentModule = __decorate([
             reports_component_1.ReportsComponent,
             tests_component_1.TestsComponent,
             take_test_component_1.TakeTestComponent,
+            grade_detail_component_1.GradeDetailComponent,
             index_2.SanitizeHtmlPipe,
             index_2.TestResponsePercentagePipe
         ],

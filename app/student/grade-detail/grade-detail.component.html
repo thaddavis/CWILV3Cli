@@ -1,0 +1,42 @@
+<main class="col-sm-4 offset-sm-4 col-md-9 offset-md-3 pt-3">
+  <div class="container">
+    <h1>Grade Detail</h1>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Standard</th>
+        <th>Domain</th>
+        <th>Response</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let q of questionInfo; let i = index;" [attr.data-index]="i"  >
+        <td>{{ i + 1 }}</td>
+        <td>{{ q.standard }}</td>
+        <td>{{ q.domain }}</td>
+        <td>{{ result[i] }}</td>
+      </tr>
+
+      <!-- <tr (click)="loadStudentDetail()">
+        <td>123231</td>
+        <td>Stephanie Correa</td>
+        <td>97%</td>
+      </tr>
+      <tr (click)="loadStudentDetail()">
+        <td>42345</td>
+        <td>Tadeo Mattheus</td>
+        <td>94%</td>
+      </tr>
+      <tr (click)="loadStudentDetail()">
+        <td>578492</td>
+        <td>Henrietta Sanchez</td>
+        <td>97%</td>
+      </tr> -->
+    </tbody>
+  </table>
+
+
+</main>

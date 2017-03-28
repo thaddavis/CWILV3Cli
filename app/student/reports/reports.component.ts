@@ -9,7 +9,7 @@ import {
   TestService,
   TestResponseService
 } from '../../_services/index';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
     moduleId: module.id,
@@ -99,5 +99,22 @@ export class ReportsComponent implements OnInit {
               }
             }
         );
+    }
+
+    loadGradeDetail(res: any) {
+
+        console.log('eeee');
+        console.log(res);
+        console.log(res.result);
+
+        let navigationExtras: NavigationExtras = {
+            queryParams: {
+              "testID": res.testID,
+              "result": res.result
+            }
+        };
+
+        this.router.navigate(['/student/grade-detail'], navigationExtras);
+
     }
 }

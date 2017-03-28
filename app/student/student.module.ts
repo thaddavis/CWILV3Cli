@@ -21,6 +21,7 @@ import { OverviewComponent } from './overview/overview.component';
 import { ReportsComponent } from './reports/reports.component';
 import { TestsComponent } from './tests/tests.component';
 import { TakeTestComponent } from './take-test/take-test.component';
+import { GradeDetailComponent } from './grade-detail/grade-detail.component';
 
 import { FormsModule }    from '@angular/forms';
 
@@ -38,6 +39,7 @@ import { FormsModule }    from '@angular/forms';
     ReportsComponent,
     TestsComponent,
     TakeTestComponent,
+    GradeDetailComponent,
     SanitizeHtmlPipe,
     TestResponsePercentagePipe
   ],

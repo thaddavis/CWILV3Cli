@@ -6,6 +6,7 @@ import { BrowseQuestionsComponent } from './browse-questions/browse-questions.co
 import { OverviewComponent } from './overview/overview.component';
 import { ReportsComponent } from './reports/reports.component';
 import { TestsComponent } from './tests/tests.component';
+import { GradeDetailComponent } from './grade-detail/grade-detail.component';
 
 import { TakeTestComponent } from './take-test/take-test.component';
 
@@ -25,7 +26,8 @@ const studentRoutes: Routes = [
           { path: 'tests', component: TestsComponent },
           { path: 'reports', component: ReportsComponent },
           { path: 'browse-questions', component: BrowseQuestionsComponent },
-          { path: 'take-test', component: TakeTestComponent }
+          { path: 'take-test', component: TakeTestComponent },
+          { path: 'grade-detail', component: GradeDetailComponent}
         ]
       }
     ]

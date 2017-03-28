@@ -33,7 +33,7 @@
           </tr>
         </thead>
         <tbody>
-           <tr *ngFor="let g of testsResponsesOfSelectedClass">
+           <tr *ngFor="let g of testsResponsesOfSelectedClass" (click)="loadGradeDetail(g)">
             <td> {{g.testName}} </td>
             <td>{{g.testID}}</td>
             <td>{{g.created_at}}</td>

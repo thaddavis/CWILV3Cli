@@ -13,6 +13,7 @@ var browse_questions_component_1 = require("./browse-questions/browse-questions.
 var overview_component_1 = require("./overview/overview.component");
 var reports_component_1 = require("./reports/reports.component");
 var tests_component_1 = require("./tests/tests.component");
+var grade_detail_component_1 = require("./grade-detail/grade-detail.component");
 var take_test_component_1 = require("./take-test/take-test.component");
 var studentRoutes = [
     {
@@ -27,7 +28,8 @@ var studentRoutes = [
                     { path: 'tests', component: tests_component_1.TestsComponent },
                     { path: 'reports', component: reports_component_1.ReportsComponent },
                     { path: 'browse-questions', component: browse_questions_component_1.BrowseQuestionsComponent },
-                    { path: 'take-test', component: take_test_component_1.TakeTestComponent }
+                    { path: 'take-test', component: take_test_component_1.TakeTestComponent },
+                    { path: 'grade-detail', component: grade_detail_component_1.GradeDetailComponent }
                 ]
             }
         ]

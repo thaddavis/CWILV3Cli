@@ -12,8 +12,6 @@ var TestResponsePercentagePipe = (function () {
     }
     TestResponsePercentagePipe.prototype.transform = function (s) {
         var total = s.length;
-        console.log('aahhh');
-        console.log(total);
         var count = 0;
         for (var i = 0; i < s.length; ++i) {
             if (s[i] == "Correct")

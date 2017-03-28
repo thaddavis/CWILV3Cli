@@ -76,6 +76,18 @@ var ReportsComponent = (function () {
             }
         });
     };
+    ReportsComponent.prototype.loadGradeDetail = function (res) {
+        console.log('eeee');
+        console.log(res);
+        console.log(res.result);
+        var navigationExtras = {
+            queryParams: {
+                "testID": res.testID,
+                "result": res.result
+            }
+        };
+        this.router.navigate(['/student/grade-detail'], navigationExtras);
+    };
     return ReportsComponent;
 }());
 ReportsComponent = __decorate([
